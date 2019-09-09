@@ -46,58 +46,27 @@ const Sidebar = props => {
   const pages = [
     {
       title: "Dashboard",
-      href: "/dashboard/in",
-      icon: <DashboardIcon />
+      href: "/dashboard/in"
     },
     {
-      title: "Users",
-      href: "/dashboard/users",
-      icon: <PeopleIcon />
+      title: "DGDA Payment",
+      href: "/dashboard/users"
     },
     {
-      title: "Media",
-      href: "/dashboard/media",
-      icon: <Media />
+      title: "DGI Payment",
+      href: "/dashboard/media"
     },
     {
-      title: "Events",
-      href: "/dashboard/events",
-      icon: <Event />
+      title: "DGRAD Payment",
+      href: "/dashboard/events"
     },
     {
-      title: "Sermon",
-      href: "/dashboard/sermons",
-      icon: <Mic />
+      title: "DGRK Document Liquidation Payment",
+      href: "/dashboard/sermons"
     },
     {
-      title: "Devotion",
-      href: "/dashboard/devotion",
-      icon: <Book />
-    },
-    {
-      title: "Prayer Request",
-      href: "/dashboard/prayer-request",
-      icon: <AccountBoxIcon />
-    },
-    {
-      title: "Hymn",
-      href: "/dashboard/hymn",
-      icon: <AccountBoxIcon />
-    },
-    {
-      title: "Account",
-      href: "/dashboard/account",
-      icon: <AccountBoxIcon />
-    },
-    // {
-    //   title: "Settings",
-    //   href: "/dashboard/settings",
-    //   icon: <SettingsIcon />
-    // },
-    {
-      title: "Support",
-      href: "/dashboard/support",
-      icon: <ContactSupportOutlined />
+      title: "Reports",
+      href: "/dashboard/support"
     }
   ];
 
@@ -119,7 +88,7 @@ const Sidebar = props => {
           className={classes.nav}
           pages={pages}
         />
-        <UpgradePlan />
+        {/* <UpgradePlan /> */}
       </div>
     </Drawer>
   );

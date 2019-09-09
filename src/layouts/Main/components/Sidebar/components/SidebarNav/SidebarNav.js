@@ -10,7 +10,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Button from "@material-ui/core/Button";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import { withRouter } from "next/router";
-
+// import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -62,9 +62,10 @@ const SidebarNav = props => {
             // className={classes.button}
             href={page.href}
           >
-            <div className={classes.icon}>{page.icon}</div>
+            {/* <div className={classes.icon}>{page.icon}</div> */}
             {page.title}
           </Button>
+          {/* <Divider /> */}
         </ListItem>
       ))}
     </List>

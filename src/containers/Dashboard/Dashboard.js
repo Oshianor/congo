@@ -31,38 +31,14 @@ const Dashboard = () => {
 
   return (
     <div className={classes.root}>
-      <Card>
-        <CardHeader color="warning" stats icon>
-          <CardIcon color="warning">
-            <Icon>content_copy</Icon>
-          </CardIcon>
-          <p className={classes.cardCategory}>Used Space</p>
-          <h3 className={classes.cardTitle}>
-            49/50 <small>GB</small>
-          </h3>
-        </CardHeader>
-        <CardFooter stats>
-          <div className={classes.stats}>
-            <Danger>
-              <Warning />
-            </Danger>
-            <a href="#pablo" onClick={e => e.preventDefault()}>
-              Get more space
-            </a>
-          </div>
-        </CardFooter>
-      </Card>
-      <Grid container spacing={4}>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
+      <Grid container spacing={4} justify="space-between">
+        <Grid item lg={3} sm={3} xl={4} xs={12}>
           <Budget />
         </Grid>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
-          <TotalUsers />
-        </Grid>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
+        <Grid item lg={3} sm={3} xl={4} xs={12}>
           <TasksProgress />
         </Grid>
-        <Grid item lg={3} sm={6} xl={3} xs={12}>
+        <Grid item lg={3} sm={3} xl={4} xs={12}>
           <TotalProfit />
         </Grid>
         <Grid item lg={8} md={12} xl={9} xs={12}>

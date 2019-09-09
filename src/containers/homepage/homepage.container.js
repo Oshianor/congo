@@ -14,15 +14,13 @@ import Divider from "@material-ui/core/Divider";
 export default function HomepageContainer() {
 	return (
     <div>
-      {/* <HeaderAdvance /> */}
+      <HeaderAdvance />
       <Carosel />
       {/* <SliderComponent /> */}
       <OurCustomers />
       <SupportSection />
       <AutomatedSection />
       <Divider />
-      <ThemeSection />
-      <Pricing />
       <Footer />
     </div>
   );

@@ -1,40 +1,77 @@
 import React, { Component } from 'react';
 import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Avatar from "@material-ui/core/Avatar";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    textAlign: "center"
+  },
   root: {
-    marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(5),
-    textAlign: "center",
+    transition: "0.3s",
+    maxWidth: 280,
+    borderRadius: 5,
+    marginBottom: 5,
+    marginTop: 5,
+    [theme.breakpoints.down("sm")]: {
+      margin: "auto"
+    },
+    padding: theme.spacing(3),
+    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
+    "&:hover": {
+      boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)"
+    },
+    "& .MuiCard__head": {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      "& .MuiAvatar-root": {
+        width: 60,
+        height: 60,
+        backgroundColor: "#ffffff",
+        transform: "translateY(50%)"
+      },
+      "& .MuiTypography--headLabel": {
+        color: theme.palette.grey[500]
+      }
+    },
+    "& .MuiDivider-root": {
+      marginLeft: -theme.spacing(3),
+      marginRight: -theme.spacing(3)
+    },
+    "& .MuiCardContent-root": {
+      textAlign: "left",
+      padding: 0,
+      paddingTop: theme.spacing(6),
+      "& .MuiTypography--overline": {
+        fontSize: 16,
+        fontWeight: "bold",
+        color: theme.palette.grey[500]
+      },
+      "& .MuiTypography--heading": {
+        fontWeight: 900
+      },
+      "& .MuiTypography--subheading": {
+        lineHeight: 1.8
+      }
+    }
+  },
+  cong: {
     display: "flex",
-    flexDirection: "column"
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center"
+    }
   },
   headline: {
     fontSize: 25,
-    margin: theme.spacing(3)
-  },
-  textBody: {
-    fontSize: 18,
-    lineHeight: 1.5
-  },
-  logos: {
-    opacity: 0.2,
-    // backgroundColor: "black",
-    display: "flex",
-    justifyContent: "space-between"
-  },
-  cusImg: {
-    width: 50,
-    padding: 5
-  },
-  mfm: {
-    marginTop: theme.spacing(2),
-    fontSize: 20,
-    fontStyle: "italic",
-    fontFamily: "fantasy"
+    textAlign: "center"
   }
 }));
 
@@ -42,35 +79,136 @@ const useStyles = makeStyles(theme => ({
 function OurCustomers() {
   const classes = useStyles();
 	return (
-    <Container maxWidth="md" className={classes.root}>
+    <Container maxWidth="lg" className={classes.container}>
       <Typography className={classes.headline} variant="overline">
         OUR FRIENDS IN HIGH PLACES
       </Typography>
 
-      <Typography className={classes.textBody} variant="caption">
-        Build customer confidence by listing your users! Anyone who has used
-        your service and has been pleased with it should have a place here! From
-        Fortune 500 to start-ups, all your app enthusiasts will be glad to be
-        featured in this section. Moreover, users will feel confident seing
-        someone vouching for your product!
-      </Typography>
-
-      <div className={classes.logos}>
-        <Typography className={classes.mfm} variant="overline">
-          MFM
-        </Typography>
-        <Typography className={classes.mfm} variant="overline">
-          RCCG
-        </Typography>
-        <Typography className={classes.mfm} variant="overline">
-          DAYSTAR
-        </Typography>
-        <Typography className={classes.mfm} variant="overline">
-          TREM
-        </Typography>
-        <Typography className={classes.mfm} variant="overline">
-          WINNERS CHAPEL
-        </Typography>
+      <div className={classes.cong}>
+        <Card className={classes.root}>
+          <div className={"MuiCard__head"}>
+            <Avatar
+              className={"MuiAvatar-root"}
+              src={
+                "http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Polymer_Project_logo.png/240px-Polymer_Project_logo.png"
+              }
+            />
+          </div>
+          <Divider className={"MuiDivider-root"} light />
+          <CardContent className={"MuiCardContent-root"}>
+            <Typography
+              className={"MuiTypography--overline"}
+              variant={"overline"}
+              gutterBottom
+            >
+              Google Inc.
+            </Typography>
+            <Typography
+              className={"MuiTypography--heading"}
+              variant={"h5"}
+              gutterBottom
+            >
+              Project Polymer
+            </Typography>
+            <Typography className={"MuiTypography--subheading"} gutterBottom>
+              Web components usher in a new era of web development based on
+              encapsulated and interoperable custom
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card className={classes.root}>
+          <div className={"MuiCard__head"}>
+            <Avatar
+              className={"MuiAvatar-root"}
+              src={
+                "http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Polymer_Project_logo.png/240px-Polymer_Project_logo.png"
+              }
+            />
+          </div>
+          <Divider className={"MuiDivider-root"} light />
+          <CardContent className={"MuiCardContent-root"}>
+            <Typography
+              className={"MuiTypography--overline"}
+              variant={"overline"}
+              gutterBottom
+            >
+              Google Inc.
+            </Typography>
+            <Typography
+              className={"MuiTypography--heading"}
+              variant={"h5"}
+              gutterBottom
+            >
+              Project Polymer
+            </Typography>
+            <Typography className={"MuiTypography--subheading"} gutterBottom>
+              Web components usher in a new era of web development based on
+              encapsulated and interoperable custom
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card className={classes.root}>
+          <div className={"MuiCard__head"}>
+            <Avatar
+              className={"MuiAvatar-root"}
+              src={
+                "http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Polymer_Project_logo.png/240px-Polymer_Project_logo.png"
+              }
+            />
+          </div>
+          <Divider className={"MuiDivider-root"} light />
+          <CardContent className={"MuiCardContent-root"}>
+            <Typography
+              className={"MuiTypography--overline"}
+              variant={"overline"}
+              gutterBottom
+            >
+              Google Inc.
+            </Typography>
+            <Typography
+              className={"MuiTypography--heading"}
+              variant={"h5"}
+              gutterBottom
+            >
+              Project Polymer
+            </Typography>
+            <Typography className={"MuiTypography--subheading"} gutterBottom>
+              Web components usher in a new era of web development based on
+              encapsulated and interoperable custom
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card className={classes.root}>
+          <div className={"MuiCard__head"}>
+            <Avatar
+              className={"MuiAvatar-root"}
+              src={
+                "http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Polymer_Project_logo.png/240px-Polymer_Project_logo.png"
+              }
+            />
+          </div>
+          <Divider className={"MuiDivider-root"} light />
+          <CardContent className={"MuiCardContent-root"}>
+            <Typography
+              className={"MuiTypography--overline"}
+              variant={"overline"}
+              gutterBottom
+            >
+              Google Inc.
+            </Typography>
+            <Typography
+              className={"MuiTypography--heading"}
+              variant={"h5"}
+              gutterBottom
+            >
+              Project Polymer
+            </Typography>
+            <Typography className={"MuiTypography--subheading"} gutterBottom>
+              Web components usher in a new era of web development based on
+              encapsulated and interoperable custom
+            </Typography>
+          </CardContent>
+        </Card>
       </div>
     </Container>
   );
