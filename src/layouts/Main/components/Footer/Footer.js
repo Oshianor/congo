@@ -27,7 +27,7 @@ const Footer = props => {
           href="https://devias.io/"
           target="_blank"
         >
-          Churchee
+          Access Bank Plc
         </Link>
         . 2019
       </Typography>

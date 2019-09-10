@@ -16,6 +16,8 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
+import Link from "../../Link";
+
 
 
 
@@ -57,6 +59,17 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "center"
   },
+  head: {
+    margin: "10px 5px",
+    marginRight: 10,
+    padding: 5,
+    color: 'grey'
+  }, 
+  heads: {
+    marginLeft: 10,
+    padding: 5,
+    background: '#014086'
+  }, 
   inputRoot: {
     color: "inherit"
   },
@@ -177,26 +190,32 @@ export default function PrimarySearchAppBar() {
           <img src="/static/images/logo-main.png" className={classes.img} />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button variant="text" color="inherit">
-              Log In
-            </Button>
-            <Button variant="text" color="inherit">
-              Log In
-            </Button>
-            <Button variant="text" color="inherit">
-              Log In
-            </Button>
-            <Button variant="text" color="inherit">
-              Log In
-            </Button>
-            <Button variant="text" color="inherit">
-              Log In
-            </Button>
-            <Button variant="text" color="inherit">
-              Log In
-            </Button>
-            <Button variant="contained" color="secondary">
-              Join Us
+            <Link className={classes.head} variant="text" color="inherit">
+              About Us
+            </Link>
+            <Link className={classes.head} variant="text" color="inherit">
+              Sustainable Banking
+            </Link>
+            <Link className={classes.head} variant="text" color="inherit">
+              Investor Relaations
+            </Link>
+            <Link className={classes.head} variant="text" color="inherit">
+              Media
+            </Link>
+            <Link className={classes.head} variant="text" color="inherit">
+              Careers
+            </Link>
+            <Link className={classes.head} variant="text" color="inherit">
+              Branch & ATM Locator
+            </Link>
+            <Link className={classes.head} variant="text" color="inherit">
+              Customer Support
+            </Link>
+            <Link className={classes.head} variant="text" color="inherit">
+              Customer Locations
+            </Link>
+            <Button className={classes.heads} variant="contained" color="secondary">
+              Login
             </Button>
           </div>
           <div className={classes.sectionMobile}>
