@@ -1,0 +1,1 @@
+export const BENEFICIARY_TYPE = "BENEFICIARY_TYPE";

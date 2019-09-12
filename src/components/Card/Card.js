@@ -1,38 +1,95 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
+import { makeStyles } from "@material-ui/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardHeader from "@material-ui/core/CardHeader";
+import Zoom from "@material-ui/core/Zoom";
 
-// core components
-import styles from "../../theme/jss/components/cardStyle.js";
 
-const useStyles = makeStyles(styles);
+const offset = 40;
+const cardShadow = "0px 14px 80px rgba(34, 35, 58, 0.2)";
+// const cardShadow = "0px 0px 0px rgba(34, 35, 58, 0.2)";
+const headerShadow = "4px 4px 20px 1px rgba(0, 0, 0, 0.2)";
 
-export default function Card(props) {
+const useStyles = makeStyles(theme => ({
+  root: {
+    marginTop: offset,
+    borderRadius: theme.spacing(0.5),
+    transition: "0.3s",
+    boxShadow: cardShadow,
+    position: "relative",
+    // [theme.breakpoints.only("sm")]: {
+    //   width: "70%"
+    // },
+    // [theme.breakpoints.only("md")]: {
+    //   width: "80%"
+    // },
+    // [theme.breakpoints.only("xs")]: {
+    //   width: "90%"
+    // },
+    // width: "50%",
+    width: "100%",
+    overflow: "initial",
+    background: "#ffffff",
+    "& .MuiCardHeader-root": {
+      flexShrink: 0,
+      // marginTop: -40,
+      // marginLeft: 25,
+      // marginRight: 25,
+      position: "absolute",
+      top: -offset,
+      right: 20,
+      left: 20,
+      borderRadius: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+      // backgroundColor: "#f89b5f",
+      // overflow: "hidden",
+      boxShadow: headerShadow,
+      textAlign: "left",
+      "& .MuiCardHeader-title": {
+        color: "#ffffff",
+        fontWeight: 900,
+        letterSpacing: 1
+      },
+      "& .MuiCardHeader-subheader": {
+        color: "#ffffff",
+        opacity: 0.87,
+        fontWeight: 200,
+        letterSpacing: 0.4
+      }
+    },
+    "& .MuiCardContent-root": {
+      textAlign: "left",
+      "& .MuiCardContent-inner": {
+        paddingTop: "38px",
+        overflowX: "auto"
+      }
+    }
+  }
+}));
+
+const CardComponent = (props) => {
   const classes = useStyles();
-  const { className, children, plain, profile, chart, ...rest } = props;
-  const cardClasses = classNames({
-    [classes.card]: true,
-    [classes.cardPlain]: plain,
-    [classes.cardProfile]: profile,
-    [classes.cardChart]: chart,
-    [className]: className !== undefined
-  });
-  return (
-    <div className={cardClasses} {...rest}>
-      {children}
-    </div>
-  );
-}
+  const { title, subtitle } = props;
 
-Card.propTypes = {
-  className: PropTypes.string,
-  plain: PropTypes.bool,
-  profile: PropTypes.bool,
-  chart: PropTypes.bool,
-  children: PropTypes.node
+  return (
+    <Zoom in={true} style={{ transitionDelay: "200ms"}}>
+      <Card className={classes.root}>
+        <CardHeader
+          className={"MuiCardHeader-root"}
+          title={title}
+          subheader={subtitle}
+          classes={{
+            title: "MuiCardHeader-title",
+            subheader: "MuiCardHeader-subheader"
+          }}
+        />
+        <CardContent className={"MuiCardContent-root"}>
+          <div className={"MuiCardContent-inner"}>{props.children}</div>
+        </CardContent>
+      </Card>
+    </Zoom>
+  );
 };
+
+export default CardComponent;

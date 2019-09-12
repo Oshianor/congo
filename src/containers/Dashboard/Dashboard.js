@@ -2,12 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 import Icon from "@material-ui/core/Icon";
-import Card from "../../components/Card/Card.js";
-import CardHeader from "../../components/Card/CardHeader.js";
-import CardIcon from "../../components/Card/CardIcon.js";
-import CardBody from "../../components/Card/CardBody.js";
-import CardFooter from "../../components/Card/CardFooter.js";
-import Danger from "../../components/Typography/Danger.js";
 import Warning from "@material-ui/icons/Warning";
 import {
   Budget,

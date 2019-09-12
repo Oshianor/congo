@@ -6,6 +6,7 @@ import { Typography, Link } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    textAlign: "center",
     padding: theme.spacing(4)
   }
 }));

@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderAdvance from "../../components/headers/headerAdvance";
-import SliderComponent from './components/slider.component';
+// import SliderComponent from './components/slider.component';
 import OurCustomers from './components/ourCustomers';
 import Pricing from './components/pricing';
 import Footer from '../../components/footer/footer';

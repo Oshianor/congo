@@ -1,11 +1,14 @@
 import React from 'react';
-import Link from '../../../../Link';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
+import Link from "../../../../Link";
+
+
+
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -13,7 +16,9 @@ const useStyles = makeStyles(() => ({
   },
   header: {
     color: "#e5e5e5"
-  }
+  },
+  headName: { color: "white", fontFamily: "monospace" },
+  link: { display: "flex", justifyContent: "center", alignItems: "center" }
 }));
 
 const Topbar = props => {
@@ -29,9 +34,10 @@ const Topbar = props => {
       position="fixed"
     >
       <Toolbar>
-        <Link href="/">
-          <Typography className={classes.header} variant="h4">
-            CHURCHEE
+        <Link href="/" className={classes.link}>
+          <img alt="Logo" src="/static/images/logo.png" />
+          <Typography variant="h2" className={classes.headName}>
+            Access
           </Typography>
         </Link>
       </Toolbar>

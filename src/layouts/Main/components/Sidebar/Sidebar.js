@@ -18,7 +18,7 @@ import { Profile, SidebarNav, UpgradePlan } from './components';
 const useStyles = makeStyles(theme => ({
   drawer: {
     width: 240,
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       marginTop: 64,
       height: 'calc(100% - 64px)'
     }
@@ -50,23 +50,23 @@ const Sidebar = props => {
     },
     {
       title: "DGDA Payment",
-      href: "/dashboard/users"
+      href: "/dashboard/dgda"
     },
     {
       title: "DGI Payment",
-      href: "/dashboard/media"
+      href: "/dashboard/dgi"
     },
     {
       title: "DGRAD Payment",
-      href: "/dashboard/events"
+      href: "/dashboard/dgrad"
     },
     {
       title: "DGRK Document Liquidation Payment",
-      href: "/dashboard/sermons"
+      href: "/dashboard/dgrk"
     },
     {
       title: "Reports",
-      href: "/dashboard/support"
+      href: "/dashboard/reports"
     }
   ];
 
