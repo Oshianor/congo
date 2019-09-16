@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
   buttons: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: theme.spacing(5)
   },
   root: {
     marginTop: theme.spacing(2)
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const DgradPaymentInfoFormComplete = (props) => {
+const DgrkLiquidationinfoFormPayment = (props) => {
   const classes = useStyles();
   const { open, handleClose } = props;
 
@@ -110,4 +111,4 @@ const DgradPaymentInfoFormComplete = (props) => {
   );
 };
 
-export default DgradPaymentInfoFormComplete;
+export default DgrkLiquidationinfoFormPayment;
