@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 		borderRight: "1px solid",
     textDecoration: "none",
     padding: 5,
-    color: "grey"
+    color: "whitesmoke"
   }
 }));
 

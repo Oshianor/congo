@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import List from "./components/list";
 import { connect } from "react-redux";
-import SelfAndThirdPartyForm from './components/selfAndThirdPartyForm';
+// import SelfAndThirdPartyForm from './components/selfAndThirdPartyForm';
+import SelfAndThirdPartyFormAccountDetails from './components/selfAndThirdPartyFormAccountDetails';
 import DidYouKnow from '../../components/DoYouKnow/DoYouKnow';
 import Grid from "@material-ui/core/Grid";
 
@@ -13,9 +14,9 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     marginTop: theme.spacing(4),
-    // display: "flex",
-    // justifyContent: "center",
-    // alignItems: "center"
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+  
   }
 }));
 
@@ -37,7 +38,7 @@ const DGI = (props) => {
           {dgi.beneficiaryType == "" && <List />}
           {dgi.beneficiaryType === "Self" ||
           dgi.beneficiaryType === "Third Party" ? (
-            <SelfAndThirdPartyForm />
+            <SelfAndThirdPartyFormAccountDetails />
           ) : null}
         </Grid>
         <Grid item xs={12} sm={5}>

@@ -37,7 +37,7 @@ const Footer = () => {
         <Button variant="text">Faq</Button>
         <Button variant="text">Terms & Conditions</Button>
       </div>
-        <Typography className={classes.right}>© 2019 Churchee</Typography>
+        <Typography className={classes.right}>© 2019 Access Bank Plc.</Typography>
     </Container>
   );
 }

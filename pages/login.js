@@ -32,7 +32,10 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: "#014086"
+  },
+  avatarIcon: {
+    color: "#f98e46"
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -53,9 +56,9 @@ export default function SignInSide() {
       <Grid item xs={12} sm={8} md={5} component="div" elevation={6} square>
         <HeaderBasic />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon className={classes.avatarIcon} />
+            </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -83,7 +86,7 @@ export default function SignInSide() {
               autoComplete="current-password"
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox value="remember" color="primary" style={{color: '#014086'}}/>}
               label="Remember me"
             />
             <Button

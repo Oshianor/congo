@@ -24,8 +24,8 @@ const DGDA = () => {
       <div className={classes.content}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={7}>
-            <DgdaPaymentForm />
-            {/* <CustomerCare /> */}
+            {/* <DgdaPaymentForm /> */}
+            <CustomerCare />
           </Grid>
           <Grid item xs={12} sm={5}>
             <DoYouKnow />
