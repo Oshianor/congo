@@ -14,7 +14,8 @@ import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100%'
+    height: '100%',
+    width: '43vh'
   },
   content: {
     alignItems: 'center',
@@ -58,9 +59,9 @@ const TasksProgress = props => {
               className={classes.title}
               color="textSecondary"
               gutterBottom
-              variant="body2"
+              variant="h6"
             >
-              TASKS PROGRESS
+              PENDING TAX
             </Typography>
             <Typography variant="h3">75.5%</Typography>
           </Grid>

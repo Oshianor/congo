@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Grid } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 import Icon from "@material-ui/core/Icon";
 import Warning from "@material-ui/icons/Warning";
+import Circle from "./components/RoundCircle/Circles"
 import {
   Budget,
   TotalUsers,
@@ -11,7 +12,7 @@ import {
   LatestSales,
   UsersByDevice,
   LatestProducts,
-  LatestOrders
+  LatestOrders,
 } from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -25,29 +26,24 @@ const Dashboard = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={4} justify="space-between">
-        <Grid item lg={3} sm={3} xl={4} xs={12}>
-          <Budget />
+      <Container>
+        <Grid container spacing={2} justify='space-between'>
+          <Grid item lg={3} sm={3} xl={4} xs={12}>
+            <Budget />
+          </Grid>
+          <Grid item lg={3} sm={3} xl={4} xs={12}>
+            <TasksProgress />
+          </Grid>
+          <Grid item lg={3} sm={3} xl={4} xs={12}>
+            <TotalProfit />
+          </Grid>
+          <Grid item lg={8} md={12} xl={9} xs={12}>
+  
+          </Grid>
         </Grid>
-        <Grid item lg={3} sm={3} xl={4} xs={12}>
-          <TasksProgress />
-        </Grid>
-        <Grid item lg={3} sm={3} xl={4} xs={12}>
-          <TotalProfit />
-        </Grid>
-        <Grid item lg={8} md={12} xl={9} xs={12}>
-          <LatestSales />
-        </Grid>
-        <Grid item lg={4} md={6} xl={3} xs={12}>
-          <UsersByDevice />
-        </Grid>
-        <Grid item lg={4} md={6} xl={3} xs={12}>
-          <LatestProducts />
-        </Grid>
-        <Grid item lg={8} md={12} xl={9} xs={12}>
-          <LatestOrders />
-        </Grid>
-      </Grid>
+        <Circle />
+
+      </Container>
     </div>
   );
 };

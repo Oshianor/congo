@@ -76,3 +76,19 @@ LatestSales.propTypes = {
 };
 
 export default LatestSales;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

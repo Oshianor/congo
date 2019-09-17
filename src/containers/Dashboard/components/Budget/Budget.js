@@ -8,7 +8,8 @@ import MoneyIcon from '@material-ui/icons/Money';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100%'
+    height: '100%',
+    width: '43vh',
   },
   content: {
     alignItems: 'center',
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700
   },
   avatar: {
-    backgroundColor: theme.palette.error.main,
+    backgroundColor: '#f89b5f',
     height: 56,
     width: 56
   },
@@ -32,10 +33,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center'
   },
   differenceIcon: {
-    color: theme.palette.error.dark
+    color: '#f89b5f'
   },
   differenceValue: {
-    color: theme.palette.error.dark,
+    color: '#f89b5f',
     marginRight: theme.spacing(1)
   }
 }));
@@ -60,9 +61,9 @@ const Budget = props => {
               className={classes.title}
               color="textSecondary"
               gutterBottom
-              variant="body2"
+              variant="h6"
             >
-              BUDGET
+              TOTAL TAX
             </Typography>
             <Typography variant="h3">$24,000</Typography>
           </Grid>
