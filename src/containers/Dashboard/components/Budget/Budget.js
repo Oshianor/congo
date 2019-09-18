@@ -9,7 +9,7 @@ import MoneyIcon from '@material-ui/icons/Money';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
-    width: '43vh',
+    // width: '43vh',
   },
   content: {
     alignItems: 'center',

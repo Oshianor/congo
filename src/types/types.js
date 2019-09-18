@@ -1,1 +1,2 @@
 export const BENEFICIARY_TYPE = "BENEFICIARY_TYPE";
+export const DGDA_ROUTE = "DGDA_ROUTE";

@@ -6,7 +6,12 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/styles";
 import TextField from "@material-ui/core/TextField";
+import { connect } from 'react-redux';
+import { setDgdaRoute } from "../../../actions/data";
 
+const mapDispatchToProps = {
+  setDgdaRoute
+};
 
 
 
@@ -68,9 +73,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide(props) {
-	const { open, handleClose } = props;
-	const classes = useStyles();
+const AlertDialogSlide = (props) =>  {
+	const { open, handleClose, setDgdaRoute } = props;
+  const classes = useStyles();
+  
+  const handleProcess = () => {
+    setDgdaRoute("customerCare");
+    handleClose()
+  }
+
   return (
     <Dialog
       open={open}
@@ -86,7 +97,7 @@ export default function AlertDialogSlide(props) {
         <Typography className={classes.text}>Ref: A1000234</Typography>
         <Button
           variant="outlined"
-          // onClick={handleOpen}
+          onClick={() => handleProcess()}
           size="small"
           color="primary"
         >
@@ -115,15 +126,21 @@ export default function AlertDialogSlide(props) {
             </Button>
           </label>
         </div>
-				<Button
-					variant="contained"
-					// onClick={handleOpen}
-					size="small"
-					color="primary"
-				>
-					OK
-				</Button>
+        <Button
+          variant="contained"
+          // onClick={handleOpen}
+          size="small"
+          color="primary"
+        >
+          OK
+        </Button>
       </DialogContent>
     </Dialog>
   );
 }
+
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AlertDialogSlide);

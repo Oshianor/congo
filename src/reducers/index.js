@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import dataReducers from "./dataReducers";
-import dgiReducers from "./dgiReducers";
+import dgdaReducer from "./dgdaReducer";
+import dgiReducers from "./dgiReducer";
 
 const appReducer = combineReducers({
-  dgi: dgiReducers
+  dgi: dgiReducers,
+  dgda: dgdaReducer
 });
 
 export default appReducer;

@@ -10,47 +10,55 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
 
-const useStyles = makeStyles((theme) => ({
-    box: {
-      width: 200,
-      height: 200,
-      border: "5px solid #014086",
-      borderRadius: 200,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column'
-    },
-    actions: {
-      justifyContent: 'flex-end'
-    },
-    circle: {
-      marginTop: theme.spacing(15),
-      display: 'flex',
-     
-    },
-    image: {
-      height: 50,
-      weight: 50,
-      color: '#014086'
+const useStyles = makeStyles(theme => ({
+  box: {
+    maxWidth: 200,
+    height: 200,
+    border: "5px solid #014086",
+    borderRadius: 200,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: 150,
+      height: 150
     }
-   
-  }));
+  },
+  actions: {
+    justifyContent: "flex-end"
+  },
+  circle: {
+    marginTop: theme.spacing(15)
+    // display: 'flex',
+    // justifyContent: "space-be",
+    // alignItems: "center",
+    // [theme.breakpoints.only("xs")]: {
+
+    // }
+  },
+  image: {
+    height: 50,
+    weight: 50,
+    [theme.breakpoints.down("sm")]: {
+      width: 35,
+      height: 35
+    },
+    color: "#014086"
+  }
+}));
 
 
 
  
 
 const Circle = props => {
-
   const classes = useStyles();
 
   return (
- 
     <Container maxWidth='xl' className={classes.circle}>
-
-      <Grid container>
-        <Grid sm={3}>
+      <Grid container  justify="center" alignItems="center">
+        <Grid sm={3} xs={6}>
           <div className={classes.box}>
             <Typography variant='h5' > DGDA Payment</Typography>
             <div>
@@ -58,7 +66,7 @@ const Circle = props => {
             </div>
           </div>
         </Grid>
-        <Grid sm={3}>
+        <Grid sm={3} xs={6}>
           <div className={classes.box}>
             <Typography variant='h5' > DGI Payment</Typography>
             <div>
@@ -66,7 +74,7 @@ const Circle = props => {
             </div>
           </div>
         </Grid>
-        <Grid sm={3}>
+        <Grid sm={3} xs={6}>
           <div className={classes.box}>
            <Typography variant='h5' > DGAD Payment</Typography>
            <div>
@@ -75,7 +83,7 @@ const Circle = props => {
           </div>
         </Grid>
           
-        <Grid sm={3}>
+        <Grid sm={3} xs={6}>
           <div className={classes.box}>
             <Typography variant='h5' > DGRK Payment</Typography>
             <div>

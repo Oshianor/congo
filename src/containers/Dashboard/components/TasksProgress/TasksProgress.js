@@ -15,7 +15,7 @@ import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
-    width: '43vh'
+    // width: '43vh'
   },
   content: {
     alignItems: 'center',
