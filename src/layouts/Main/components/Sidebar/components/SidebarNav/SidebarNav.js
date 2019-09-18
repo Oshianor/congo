@@ -62,7 +62,7 @@ const SidebarNav = props => {
             // className={classes.button}
             href={page.href}
           >
-            {/* <div className={classes.icon}>{page.icon}</div> */}
+            <div className={classes.icon}>{page.icon}</div>
             {page.title}
           </Button>
           {/* <Divider /> */}

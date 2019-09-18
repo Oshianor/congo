@@ -46,27 +46,38 @@ const Sidebar = props => {
   const pages = [
     {
       title: "Dashboard",
-      href: "/dashboard/in"
+      href: "/dashboard/in",
+      icon: <DashboardIcon />
     },
     {
       title: "DGDA Payment",
-      href: "/dashboard/dgda"
+      href: "/dashboard/dgda",
+      icon: <AccountBoxIcon />
+
     },
     {
       title: "DGI Payment",
-      href: "/dashboard/dgi"
+      href: "/dashboard/dgi",
+      icon: <Media />
+
     },
     {
       title: "DGRAD Payment",
-      href: "/dashboard/dgrad"
+      href: "/dashboard/dgrad",
+      icon: <Event />
+
     },
     {
       title: "DGRK Document Liquidation Payment",
-      href: "/dashboard/dgrk"
+      href: "/dashboard/dgrk",
+      icon: <PeopleIcon />
+
     },
     {
       title: "Reports",
-      href: "/dashboard/reports"
+      href: "/dashboard/reports",
+      icon: <Book />
+
     }
   ];
 
@@ -88,7 +99,7 @@ const Sidebar = props => {
           className={classes.nav}
           pages={pages}
         />
-        {/* <UpgradePlan /> */}
+        <UpgradePlan />
       </div>
     </Drawer>
   );

@@ -65,7 +65,7 @@ class SelfAndThirdPartyForm extends Component {
                 required
                 fullWidth
                 id="email"
-                label="benficiary Institution"
+                label="Benficiary Institution"
                 name="accountNumber"
                 autoComplete="Account Number"
                 className={classes.textField}

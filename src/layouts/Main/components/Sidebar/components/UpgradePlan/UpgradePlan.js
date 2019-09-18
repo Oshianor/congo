@@ -39,13 +39,13 @@ const UpgradePlan = props => {
       </div>
       <div className={classes.content}>
         <Typography align="center" gutterBottom variant="h6">
-          Upgrade to PRO
+          Access Bank
         </Typography>
         <Typography align="center" variant="body2">
-          Upgrade to Churchee PRO and get even more unlimited features
+          Acces bank. Tomorrow starts today 
         </Typography>
       </div>
-      <div className={classes.actions}>
+      {/* <div className={classes.actions}>
         <Button
           color="primary"
           component="a"
@@ -54,7 +54,7 @@ const UpgradePlan = props => {
         >
           Upgrade
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };
