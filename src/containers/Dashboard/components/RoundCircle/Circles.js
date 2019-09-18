@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 200,
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      flexDirection: 'column'
     },
     actions: {
       justifyContent: 'flex-end'
@@ -28,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
      
     },
+    image: {
+      height: 50,
+      weight: 50,
+      color: '#014086'
+    }
    
   }));
 
@@ -47,22 +53,34 @@ const Circle = props => {
         <Grid sm={3}>
           <div className={classes.box}>
             <Typography variant='h5' > DGDA Payment</Typography>
+            <div>
+              <img src='/static/images/share.png' className={classes.image} />
+            </div>
           </div>
         </Grid>
         <Grid sm={3}>
           <div className={classes.box}>
             <Typography variant='h5' > DGI Payment</Typography>
+            <div>
+            <img src='/static/images/share.png' className={classes.image}/>
+            </div>
           </div>
         </Grid>
         <Grid sm={3}>
           <div className={classes.box}>
            <Typography variant='h5' > DGAD Payment</Typography>
+           <div>
+            <img src='/static/images/share.png' className={classes.image}/>
+            </div>
           </div>
         </Grid>
           
         <Grid sm={3}>
           <div className={classes.box}>
             <Typography variant='h5' > DGRK Payment</Typography>
+            <div>
+            <img src='/static/images/share.png' className={classes.image}/>
+            </div>
           </div>
         </Grid>
       </Grid>
