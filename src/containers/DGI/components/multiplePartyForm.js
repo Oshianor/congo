@@ -63,7 +63,7 @@ class MultiplePartyForm extends Component {
 
   handleConfirms= () => {
     const { setBeneficiaryType } = this.props;
-    //  setBeneficiaryType("selfAndThirdPartyFormAccount");
+     setBeneficiaryType("selfAndThirdPartyFormAccount");
   }
 
   handleChange = value => event => {
@@ -142,7 +142,7 @@ class MultiplePartyForm extends Component {
 
           <div className={classes.buttons}>
             <Button 
-              onClick= {this.handleConfirms()}
+              onClick= {this.handleConfirms}
               variant="contained" size="medium" color="primary">
               Confirm
             </Button>
