@@ -16,6 +16,8 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from '@material-ui/core/MenuItem';
+import { setDgrkRoute } from "../../../actions/data";
+import { connect } from "react-redux";
 
 
 
@@ -38,34 +40,26 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const mapDispatchToProps = {
+  setDgrkRoute
+};
+
 const DgrkPaymentInfoFormComplete = (props) => {
   const classes = useStyles();
-  const { open, handleClose } = props;
+  const { open, handleClose, setDgrkRoute } = props;
 
-  const [ modal, modalVisible ] = React.useState(false);
   const [ value, setValue ] = React.useState({
     documentType: "",
   });
 
+  const handleConfirm = () => {
+    setDgrkRoute("taxDocument");
+  }
 
   const handleChange = name => event => {
     setValue({ ...values, [name]: event.target.value });
   };
 
-  const handleClickOpen = () => {
-    modalVisible( true );
-  };
-
-  const handleModalClose = () => {
-    modalVisible( false );
-  };
-
-  
-  const handleModalOk = () => {
-    const { router } = props;
-    router.push("/dashboard/dgrk");
-
-  }
 
 
   return (
@@ -130,7 +124,7 @@ const DgrkPaymentInfoFormComplete = (props) => {
         >
           Back
         </Button>
-        <Button onClick={handleClickOpen} variant="contained" size="medium" color="primary">
+        <Button onClick={() => handleConfirm()} variant="contained" size="medium" color="primary">
           Process
         </Button>
       </div>
@@ -141,4 +135,7 @@ const DgrkPaymentInfoFormComplete = (props) => {
   );
 };
 
-export default DgrkPaymentInfoFormComplete;
+export default connect(
+  null,
+  mapDispatchToProps
+)(DgrkPaymentInfoFormComplete);

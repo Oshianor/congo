@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import List from "./components/list";
 import { connect } from "react-redux";
-// import SelfAndThirdPartyForm from './components/selfAndThirdPartyForm';
+import MultiplePartyForm from './components/multiplePartyForm';
+import SelfAndThirdPartyForm from './components/selfAndThirdPartyForm';
 import SelfAndThirdPartyFormAccountDetails from './components/selfAndThirdPartyFormAccountDetails';
 import DidYouKnow from '../../components/DoYouKnow/DoYouKnow';
 import Grid from "@material-ui/core/Grid";
@@ -37,9 +38,10 @@ const DGI = (props) => {
         <Grid item xs={12} sm={7}>
           {dgi.beneficiaryType == "" && <List />}
           {dgi.beneficiaryType === "Self" ||
-          dgi.beneficiaryType === "Third Party" ? (
-            <SelfAndThirdPartyFormAccountDetails />
-          ) : null}
+          dgi.beneficiaryType === "Third Party" ? ( 
+            <SelfAndThirdPartyForm />
+             ) : ( dgi.beneficiaryType === "Multiple" && <MultiplePartyForm /> )}
+          {dgi.beneficiaryType === 'selfAndThirdPartyFormAccount' && ( <SelfAndThirdPartyFormAccountDetails />)}
         </Grid>
         <Grid item xs={12} sm={5}>
           <DidYouKnow />

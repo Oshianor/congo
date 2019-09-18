@@ -12,9 +12,6 @@ const mapStateToProps = state => ({
   dgda: state.dgda
 });
 
-// const mapDispatchToProps = {
-  
-// }
 
 
 

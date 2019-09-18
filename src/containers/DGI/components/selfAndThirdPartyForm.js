@@ -6,7 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
+import { setBeneficiaryType } from "../../../actions/data";
 
+const mapDispatchToProps = {
+  setBeneficiaryType
+};
 
 const styles = theme => ({
   root: {
@@ -36,7 +40,15 @@ function mapStateToProps(state) {
 	};
 }
 
+
+
 class SelfAndThirdPartyForm extends Component {
+
+  handleConfirm = () => {
+    const { setBeneficiaryType } = this.props;
+    setBeneficiaryType("selfAndThirdPartyFormAccount");
+  }
+
 	render() {
 		const { dgi, classes } = this.props;
 		const checked = dgi.beneficiaryType === "Third Party" || dgi.beneficiaryType === "Self";
@@ -137,7 +149,9 @@ class SelfAndThirdPartyForm extends Component {
             >
               Back
             </Button>
-            <Button variant="contained" size="medium" color="primary">
+            <Button 
+              onClick={this.handleConfirm}
+              variant="contained" size="medium" color="primary">
               Confirm
             </Button>
           </div>
@@ -147,4 +161,4 @@ class SelfAndThirdPartyForm extends Component {
 	}
 }
 
-export default connect(mapStateToProps)(withStyles(styles)(SelfAndThirdPartyForm));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SelfAndThirdPartyForm));

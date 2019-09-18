@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     padding: theme.spacing(4),
     position: "absolute",
-    bottom: 0,
+    // bottom: 0,
     left: "50%",
     [theme.breakpoints.down("sm")]: {
       position: "relative",

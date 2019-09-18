@@ -5,30 +5,29 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from "@material-ui/core/styles";
-import DgrkLiqudationPay from './DgrkLiquidationInfoFormComplete';
+import Add from "@material-ui/icons/Add";
+import { setBeneficiaryType } from "../../../actions/data"
 
+const mapDispatchToProps = {
+  setBeneficiaryType
+};
 
 
 const styles = theme => ({
-  root: {
-    padding: theme.spacing(1)
+  form: {
+    marginLeft: 5
   },
   buttons: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(2),
+    marginRight: theme.spacing(2),
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  button: {
-    marginTop: theme.spacing(9),
-    display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     alignItems: "center"
   },
   input: {
@@ -40,57 +39,56 @@ const styles = theme => ({
     border: "1px solid gray",
     borderRadius: 5
   },
-  divide: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-  },
   formControl: {
-    minWidth: 325, 
+    minWidth: 300, 
     // marginBottom: 10
   },
 });
 
 
 
+function mapStateToProps(state) {
+	return {
+		dgi: state.dgi
+	};
+}
 
-class DgrkLiquidationPaymentForm extends Component {
- state =  {
-   open: false,
-   documentType: ''
-  };
+
+class MultiplePartyForm extends Component {
+
+  state = {
+    documentType: '',
+  
+  }
+
+  handleConfirms= () => {
+    const { setBeneficiaryType } = this.props;
+    //  setBeneficiaryType("selfAndThirdPartyFormAccount");
+  }
 
   handleChange = value => event => {
-    this.setState({
-      [value]: event.target.value
-    });
+      this.setState({
+        [value]: event.target.value
+      });
   };
-
-
-  handleOpen = () => {
-    this.setState({
-      open: true
-    })
-  }
-  
-  handleClose = () => {
-    this.setState({
-      open: false
-    })
-  }
-
 
 
 	render() {
-    const { classes } = this.props;
-    const {  open, documentType  } = this.state;
-		
+    const { dgi, classes } = this.props;
+    const checked = dgi.beneficiaryType === "Multiple";
+
+    const {
+      documentType,
+      
+    } = this.state
 		return (
       <Card
-        title= " DGRK Document Liquidation Payment"
+        title={dgi.beneficiaryType + " DGI Payment"}
         subtitle="Please fill the below form"
       >
-        <form className={classes.root}>
-          <Grid container spacing={2}>
+        <form className={classes.form}>
+          <Grid container>
+           
           <Grid item xs={12} sm={6}>
             <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel htmlFor="outlined-age-simple">Document Type</InputLabel>
@@ -114,38 +112,45 @@ class DgrkLiquidationPaymentForm extends Component {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="documentNumber"
-                name="documentNumber"
-                variant="outlined"
-                required
-                fullWidth
-                id="documentNumber"
-                label="Document Number"
-                autoFocus
-              />
-            </Grid>
-                   
+           
           </Grid>
-          <div className={classes.buttons}>
-          <Button onClick={this.handleClose} variant="contained" size="medium">
-              Cancel
+          
+          <div style={{marginTop: 15}}>
+          <TextField
+            variant="outlined"
+            required
+            id="total"
+            label="Total"
+            name="total"
+            disabled
+            autoComplete="Total"
+          />
+          </div>
+                  
+          <div style={{marginTop: 15}}>
+          <Button
+              variant="outlined"
+              size="medium"
+              // onClick={handleClose}
+              color="primary"
+            >
+              Add
+              <Add />
             </Button>
+            </div>
 
-            <Button onClick={this.handleOpen} variant="contained" size="medium" color="primary">
-              Process
+
+          <div className={classes.buttons}>
+            <Button 
+              onClick= {this.handleConfirms()}
+              variant="contained" size="medium" color="primary">
+              Confirm
             </Button>
           </div>
-          
-          <DgrkLiqudationPay open={open} handleClose={this.handleClose}  />
         </form>
-
-   
-       
       </Card>
     );
 	}
 }
 
-export default (withStyles(styles)(DgrkLiquidationPaymentForm));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MultiplePartyForm));

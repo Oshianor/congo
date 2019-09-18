@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Card from "../../../components/Card/Card";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -11,6 +10,8 @@ import FormControl from "@material-ui/core/FormControl";
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+import { setDgradRoute } from "../../../actions/data"
 
 
 const styles = theme => ({
@@ -40,6 +41,10 @@ const styles = theme => ({
 });
 
 
+const mapDispatchToProps = {
+  setDgradRoute 
+}
+
 
 class DGRAD extends Component {
   state = {
@@ -54,6 +59,11 @@ class DGRAD extends Component {
       [value]: event.target.value
     });
   };
+
+  handleProceed = () => {
+    const { setDgradRoute } = this.props;
+    setDgradRoute('accountDetails')
+  }
 
 
 	render() {
@@ -212,7 +222,9 @@ class DGRAD extends Component {
           </Grid>
           <div className={classes.buttons}>
            
-            <Button variant="contained" size="medium" color="primary">
+            <Button 
+              onClick={this.handleProceed}
+              variant="contained" size="medium" color="primary">
               Proceed
             </Button>
           </div>
@@ -222,4 +234,4 @@ class DGRAD extends Component {
 	}
 }
 
-export default (withStyles(styles)(DGRAD));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(DGRAD));

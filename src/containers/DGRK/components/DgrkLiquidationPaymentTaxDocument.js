@@ -6,6 +6,12 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
+import { setDgrkRoute } from "../../../actions/data";
+
+const mapDispatchToProps = {
+  setDgrkRoute
+};
+
 
 
 const styles = theme => ({
@@ -44,6 +50,13 @@ const styles = theme => ({
 
 
 class DgrkLiquidationPaymentTaxDocument extends Component {
+
+
+  handleProcess = () => {
+    const { setDgrkRoute } = this.props;
+    setDgrkRoute("accountDetails");
+  }
+
 	render() {
 		const { classes } = this.props;
 		return (
@@ -86,7 +99,9 @@ class DgrkLiquidationPaymentTaxDocument extends Component {
             >
               Back
             </Button>
-            <Button className={classes.confirmButton} variant="contained" size="medium" color="primary">
+            <Button 
+              onClick={this.handleProcess}
+              className={classes.confirmButton} variant="contained" size="medium" color="primary">
               Confirm
             </Button>
           </div>
@@ -96,4 +111,4 @@ class DgrkLiquidationPaymentTaxDocument extends Component {
 	}
 }
 
-export default withStyles(styles)(DgrkLiquidationPaymentTaxDocument);
+export default connect(null, mapDispatchToProps)(withStyles(styles)(DgrkLiquidationPaymentTaxDocument));
