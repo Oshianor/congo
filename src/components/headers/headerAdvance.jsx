@@ -6,6 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MoreIcon from "@material-ui/icons/DashboardOutlined";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
+import { withRouter } from "next/router";
 import Link from "../../Link";
 import TopNav from "./components/topNav";
 
@@ -96,7 +97,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function PrimarySearchAppBar() {
+ function PrimarySearchAppBar(props) {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(true);
@@ -105,6 +106,16 @@ export default function PrimarySearchAppBar() {
     setOpen(!open)
   }
 
+  const handleLogin = () => {
+    const { router  } = props
+    router.push('/login');
+  }
+
+  const handleSignUp  = () => {
+    const { router  } = props
+    router.push('/signup');
+  } 
+
   return (
     <div className={classes.grow}>
       {/* <AppBar position="static"> */}
@@ -112,10 +123,10 @@ export default function PrimarySearchAppBar() {
         <Toolbar>
           <img src="/static/images/logo-main.png" className={classes.img} />
           <div className={classes.grow} />
-          <Button variant="text" color="primary">
+          <Button onClick={handleLogin} variant="text" color="primary">
             Log In
           </Button>
-          <Button style={{ borderRadius: 20, width: 100, height: 40 }} variant="contained" color="secondary">
+          <Button onClick={handleSignUp} style={{ borderRadius: 20, width: 100, height: 40 }} variant="contained" color="secondary">
             Sign Up
           </Button>
           <div className={classes.sectionMobile}>
@@ -140,6 +151,7 @@ export default function PrimarySearchAppBar() {
   );
 }
 
+export default withRouter(PrimarySearchAppBar);
 
 
 

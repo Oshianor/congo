@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -8,13 +8,18 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { withRouter } from "next/router";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import HeaderBasic from "../src/components/headers/headerBasic";
+import isEmail from 'validator/lib/isEmail';
+// import { config } from "../../../config"
+// import axios from "axios";
 
 
-const useStyles = makeStyles(theme => ({
+
+const useStyles = theme => ({
   root: {
     height: "100vh"
   },
@@ -44,75 +49,132 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2)
   }
-}));
+});
 
-export default function SignInSide() {
-  const classes = useStyles();
+ class SignInSide extends Component {
 
-  return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component="div" elevation={6} square>
-        <HeaderBasic />
-        <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon className={classes.avatarIcon} />
-            </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" style={{color: '#014086'}}/>}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+  state = {
+    email: "",
+    password: "",
+    err: "",
+    msg: ""
+  };
+
+  handleLogin = async e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    const { router } = this.props;
+
+    this.setState({
+      err: "",
+      msg: ""
+    });
+
+    if (!isEmail(email)) {
+      this.setState({
+        err: "email",
+        msg: "Invalid Email"
+      });
+      return;
+    }
+
+    if (password === "") {
+      this.setState({
+        err: "pass",
+        msg: "Paasword can't be empty"
+      });
+      return;
+    }
+  }
+
+
+  onChange = name => e => {
+    this.setState({
+      [name]: e.target.value
+    });
+  };
+
+  render () {
+    const { classes } =  this.props;
+    const {  msg, err, email, password } = this.state;
+    
+    return (
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component="div" elevation={6} square>
+          <HeaderBasic />
+          <div className={classes.paper}>
+              <Avatar className={classes.avatar}>
+                <LockOutlinedIcon className={classes.avatarIcon} />
+              </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <form className={classes.form} 
+              onSubmit={this.handleLogin}
+              noValidate
+              >
+              {err === "others" && (
+                <Paper className={classes.alert}>{msg}</Paper>
+              )}
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                value={email}
+                onChange={this.onChange("email")}
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                error={err === "email"}
+                helperText={err === "email" && msg}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                value={password}
+                onChange={this.onChange("password")}
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                error={err === "pass"}
+                helperText={err === "pass" && msg}
+                autoComplete="current-password"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={this.handleLogin}
+                className={classes.submit}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="/signup" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </form>
-        </div>
+            </form>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
-  );
-}
+    );
+  }
+ }
+export default withRouter(withStyles(useStyles)(SignInSide));
