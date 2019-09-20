@@ -45,7 +45,7 @@ const styles = theme => ({
     marginBottom: theme.spacing(3),
   },
   formControl: {
-    minWidth: 325, 
+    width: "100%", 
     // marginBottom: 10
   },
 });
@@ -91,15 +91,15 @@ class DgrkLiquidationPaymentForm extends Component {
       >
         <form className={classes.root}>
           <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <FormControl variant="outlined" className={classes.formControl}>
+            <Grid item xs={12} sm={6}>
+              <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel htmlFor="outlined-age-simple">Document Type</InputLabel>
                 <Select
                   value={documentType}
                   onChange={this.handleChange("documentType")}
                   input={
                     <OutlinedInput
-                      labelWidth={60}
+                      labelWidth={120}
                       name="age"
                       id="outlined-age-simple"
                     />
@@ -109,7 +109,7 @@ class DgrkLiquidationPaymentForm extends Component {
                     <em>None</em>
                   </MenuItem>
                   <MenuItem value="male">PDF</MenuItem>
-                  <MenuItem value="female">WOrd</MenuItem>
+                  <MenuItem value="female">Word</MenuItem>
                   <MenuItem value="others">PowerPoint</MenuItem>
                 </Select>
               </FormControl>
@@ -126,10 +126,9 @@ class DgrkLiquidationPaymentForm extends Component {
                 autoFocus
               />
             </Grid>
-                   
           </Grid>
           <div className={classes.buttons}>
-          <Button onClick={this.handleClose} variant="contained" size="medium">
+            <Button onClick={this.handleClose} variant="contained" size="medium">
               Cancel
             </Button>
 

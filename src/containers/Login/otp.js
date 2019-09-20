@@ -92,68 +92,61 @@ const useStyles = theme => ({
     
     return (
       <Fade in={true}>
-      <Grid container component="main" className={classes.root}>
-        <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component="div" elevation={6} square>
-          <HeaderBasic />
-          <div className={classes.paper}>
-              <Avatar className={classes.avatar}>
-                <LockOutlinedIcon className={classes.avatarIcon} />
-              </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <form className={classes.form} 
-              onSubmit={this.handleLogin}
-              noValidate
-              >
-              {err === "others" && (
-                <Paper className={classes.alert}>{msg}</Paper>
-              )}
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                type="number"
-                value={otp}
-                onChange={this.onChange("otp")}
-                id="email"
-                label="Enter OTP"
-                name="otp"
-                autoComplete="otp"
-                autoFocus
-                error={err === "otp"}
-                helperText={err === "otp" && msg}
-              />
-            
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                onClick={this.handleLogin}
-                className={classes.submit}
-              >
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+        <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon className={classes.avatarIcon} />
+            </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form className={classes.form} 
+            onSubmit={this.handleLogin}
+            noValidate
+            >
+            {err === "others" && (
+              <Paper className={classes.alert}>{msg}</Paper>
+            )}
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              type="number"
+              value={otp}
+              onChange={this.onChange("otp")}
+              id="email"
+              label="Enter OTP"
+              name="otp"
+              autoComplete="otp"
+              autoFocus
+              error={err === "otp"}
+              helperText={err === "otp" && msg}
+            />
+          
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={this.handleLogin}
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
               </Grid>
-            </form>
-          </div>
-        </Grid>
-      </Grid>
+              <Grid item>
+                <Link href="/signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
       </Fade>
     );
   }

@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-import Login from "../src/containers/Login/login";
-import Otp from "../src/containers/Login/otp";
-import { connect } from 'react-redux';
+import React, { Component } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -15,12 +12,10 @@ import { withRouter } from "next/router";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import HeaderBasic from "../src/components/headers/headerBasic";
-
-
-const mapStateToProps = state => ({
-  account: state.account
-});
+import HeaderBasic from "../../components/headers/headerBasic";
+import { connect } from 'react-redux';
+import isEmail from 'validator/lib/isEmail';
+import { setAccountRoute} from "../../actions/data";
 
 
 const useStyles = theme => ({
@@ -55,26 +50,71 @@ const useStyles = theme => ({
   }
 });
 
-class LoginContainer extends Component {
-	render() {
-  const { account, classes } = this.props;
+
+const mapDispatchToProps = {
+  setAccountRoute 
+}
+
+ class SignInSide extends Component {
+
+  state = {
+    email: "",
+    password: "",
+    err: "",
+    msg: "",
+  };
+
+  handleLogin = async e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    const { router, setAccountRoute } = this.props;
+    setAccountRoute('enterOtp')
+
+    this.setState({
+      err: "",
+      msg: ""
+    });
+
+    if (!isEmail(email)) {
+      this.setState({
+        err: "email",
+        msg: "Invalid Email"
+      });
+      return;
+    }
+
+    if (password === "") {
+      this.setState({
+        err: "pass",
+        msg: "Paasword can't be empty"
+      });
+      return;
+    }
+
+  }
+
+  onChange = name => e => {
+    this.setState({
+      [name]: e.target.value
+    });
+  };
+
+  render () {
+    const { classes } =  this.props;
+    const {  msg, err, email, password } = this.state;
     
-		return (
-			<Grid container component="main" className={classes.root}>
+    return (
+      <Grid container component="main" className={classes.root}>
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
         <Grid item xs={12} sm={8} md={5} component="div" elevation={6} square>
           <HeaderBasic />
-          {/* <div className={classes.paper}> */}
-            {account.route === 'login' ? ( <Login />
-              ) : (
-                <Otp />
-              )}
-          {/* </div> */}
+          <div className={classes.paper}>
+            
+          </div>
         </Grid>
       </Grid>
-		);
-	}
-}
-
-export default connect(mapStateToProps)(withStyles(useStyles)(LoginContainer));
+    );
+  }
+ }
+export default connect(null, mapDispatchToProps)(withStyles(useStyles)(SignInSide));

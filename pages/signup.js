@@ -19,8 +19,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import isEmail from 'validator/lib/isEmail';
 import HeaderBasic from "../src/components/headers/headerBasic";
-// import { config } from "../../../config"
-// import axios from "axios";
+import Axios from "axios";
+import { config } from "../config";
+import axios from "axios";
 
 
 
@@ -225,7 +226,35 @@ const useStyles = theme => ({
       });
       return;
     }
-    
+
+    try {
+       const register = await axios({
+         method: "post",
+         url: config.register,
+         data: {
+           accountNumber: Number(accountNumber),
+           firstName,
+           lastName,
+           password,
+           confirmPassword,
+           email,
+           residentialAddress,
+           country,
+           state,
+           zipCode: Number(zipCode),
+           phoneNumber,
+           tinNumber: Number(tinNumber),
+           taxInstitutionBenet,
+           typeOfCustomer
+         }
+       });
+       console.log("register", register);
+       router.push("/mailverification");
+    } catch (error) {
+      console.log(error);
+      console.log(error.response);
+       
+    }
   }
 
   handleChange = value => event => {
@@ -258,6 +287,10 @@ const useStyles = theme => ({
       msg
     } = this.state;
 
+
+    console.log("this.state", this.state);
+    
+
     return (
       <Grid container component="main" className={classes.root}>
         <CssBaseline />
@@ -273,10 +306,11 @@ const useStyles = theme => ({
                 Sign up
               </Typography>
               <form
-               onSubmit={this.handleSignUp}              
-               className={classes.form} noValidate>
-
-              {err === "others" && (
+                onSubmit={this.handleSignUp}
+                className={classes.form}
+                noValidate
+              >
+                {err === "others" && (
                   <Paper className={classes.alert}>{msg}</Paper>
                 )}
                 <Grid container spacing={2}>
@@ -349,7 +383,7 @@ const useStyles = theme => ({
                       variant="outlined"
                       required
                       fullWidth
-                      type='password'
+                      type="password"
                       value={password}
                       onChange={this.handleChange("password")}
                       id="password"
@@ -365,7 +399,7 @@ const useStyles = theme => ({
                       required
                       fullWidth
                       id="password"
-                      type='password'
+                      type="password"
                       value={confirmPassword}
                       onChange={this.handleChange("confirmPassword")}
                       label="Confirm Password"
@@ -391,15 +425,18 @@ const useStyles = theme => ({
                     />
                   </Grid>
                   <Grid item xs={12} sm={4}>
-                    <FormControl variant="outlined" className={classes.formControl}>
-                      <InputLabel  htmlFor="outlined-age-simple">
+                    <FormControl
+                      variant="outlined"
+                      className={classes.formControl}
+                    >
+                      <InputLabel htmlFor="outlined-age-simple">
                         Country
                       </InputLabel>
                       <Select
-                      value={country}
-                      onChange={this.handleChange("country")}
-                      error={err === "country"}
-                      helperText={err === "country" && msg}
+                        value={country}
+                        onChange={this.handleChange("country")}
+                        error={err === "country"}
+                        helperText={err === "country" && msg}
                         input={
                           <OutlinedInput
                             labelWidth={50}
@@ -411,22 +448,25 @@ const useStyles = theme => ({
                         <MenuItem value="">
                           <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Congo</MenuItem>
-                        <MenuItem value={20}>Nigeria</MenuItem>
-                        <MenuItem value={30}>Liberia</MenuItem>
+                        <MenuItem value="Congo">Congo</MenuItem>
+                        <MenuItem value="Nigeria">Nigeria</MenuItem>
+                        <MenuItem value="Liberia">Liberia</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={12} sm={4}>
-                    <FormControl variant="outlined" className={classes.formControl}>
-                      <InputLabel  htmlFor="outlined-age-simple">
+                    <FormControl
+                      variant="outlined"
+                      className={classes.formControl}
+                    >
+                      <InputLabel htmlFor="outlined-age-simple">
                         State
                       </InputLabel>
                       <Select
-                      value={state}
-                      onChange={this.handleChange("state")}
-                      error={err === "state"}
-                      helperText={err === "state" && msg}
+                        value={state}
+                        onChange={this.handleChange("state")}
+                        error={err === "state"}
+                        helperText={err === "state" && msg}
                         input={
                           <OutlinedInput
                             labelWidth={50}
@@ -438,9 +478,9 @@ const useStyles = theme => ({
                         <MenuItem value="">
                           <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Lagos</MenuItem>
-                        <MenuItem value={20}>oyo</MenuItem>
-                        <MenuItem value={30}>kano</MenuItem>
+                        <MenuItem value="Lagos">Lagos</MenuItem>
+                        <MenuItem value="oyo">oyo</MenuItem>
+                        <MenuItem value="kano">kano</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
@@ -492,16 +532,19 @@ const useStyles = theme => ({
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl
+                      variant="outlined"
+                      className={classes.formControl}
+                    >
                       <InputLabel htmlFor="outlined-age-simple">
                         {" "}
                         Tax Insttitution Benet
                       </InputLabel>
                       <Select
-                      value={taxInstitutionBenet}
-                      onChange={this.handleChange("taxInstitutionBenet")}
-                      error={err === "taxInstitutionBenet"}
-                      helperText={err === "taxInstitutionBenet" && msg}
+                        value={taxInstitutionBenet}
+                        onChange={this.handleChange("taxInstitutionBenet")}
+                        error={err === "taxInstitutionBenet"}
+                        helperText={err === "taxInstitutionBenet" && msg}
                         input={
                           <OutlinedInput
                             labelWidth={120}
@@ -513,22 +556,25 @@ const useStyles = theme => ({
                         <MenuItem value="">
                           <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <MenuItem value="Ten">Ten</MenuItem>
+                        <MenuItem value="Twenty">Twenty</MenuItem>
+                        <MenuItem value="Thirty">Thirty</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <FormControl variant="outlined" className={classes.formControl}>
+                    <FormControl
+                      variant="outlined"
+                      className={classes.formControl}
+                    >
                       <InputLabel htmlFor="outlined-age-simple">
                         Type of Customer
                       </InputLabel>
                       <Select
-                      value={typeOfCustomer}
-                      onChange={this.handleChange("typeOfCustomer")}
-                      error={err === "typeOfCustomer"}
-                      helperText={err === "typeOfCustomer" && msg}
+                        value={typeOfCustomer}
+                        onChange={this.handleChange("typeOfCustomer")}
+                        error={err === "typeOfCustomer"}
+                        helperText={err === "typeOfCustomer" && msg}
                         input={
                           <OutlinedInput
                             labelWidth={120}
@@ -540,15 +586,21 @@ const useStyles = theme => ({
                         <MenuItem value="">
                           <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>self</MenuItem>
-                        <MenuItem value={20}>third</MenuItem>
-                        <MenuItem value={30}>multiple</MenuItem>
+                        <MenuItem value="self">self</MenuItem>
+                        <MenuItem value="third">third</MenuItem>
+                        <MenuItem value="multiple">multiple</MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={12}>
                     <FormControlLabel
-                      control={<Checkbox value="allowExtraEmails" color="primary"  style={{color: '#014086'}}/>}
+                      control={
+                        <Checkbox
+                          value="allowExtraEmails"
+                          color="primary"
+                          style={{ color: "#014086" }}
+                        />
+                      }
                       label="I want to receive inspiration, marketing promotions and updates via email."
                     />
                   </Grid>
@@ -565,7 +617,11 @@ const useStyles = theme => ({
                 </Button>
                 <Grid container justify="flex-end">
                   <Grid item>
-                    <Link href="/login" variant="body2" className={classes.link}>
+                    <Link
+                      href="/login"
+                      variant="body2"
+                      className={classes.link}
+                    >
                       Already have an account? Sign in
                     </Link>
                   </Grid>

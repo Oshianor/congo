@@ -13,14 +13,12 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import HeaderBasic from "../../components/headers/headerBasic";
-import { connect } from 'react-redux';
-import isEmail from 'validator/lib/isEmail';
-import { setAccountRoute} from "../../actions/data"
+import { connect } from "react-redux";
+import isEmail from "validator/lib/isEmail";
+import { setAccountRoute } from "../../actions/data";
 
 // import { config } from "../../../config"
 // import axios from "axios";
-
-
 
 const useStyles = theme => ({
   root: {
@@ -54,25 +52,23 @@ const useStyles = theme => ({
   }
 });
 
-
 const mapDispatchToProps = {
-  setAccountRoute 
-}
+  setAccountRoute
+};
 
- class SignInSide extends Component {
-
+class SignInSide extends Component {
   state = {
     email: "",
     password: "",
     err: "",
-    msg: "",
+    msg: ""
   };
 
   handleLogin = async e => {
     e.preventDefault();
     const { email, password } = this.state;
     const { router, setAccountRoute } = this.props;
-    setAccountRoute('enterOtp')
+    setAccountRoute("enterOtp");
 
     this.setState({
       err: "",
@@ -94,10 +90,7 @@ const mapDispatchToProps = {
       });
       return;
     }
-
-    
-  }
-
+  };
 
   onChange = name => e => {
     this.setState({
@@ -105,89 +98,80 @@ const mapDispatchToProps = {
     });
   };
 
-  render () {
-    const { classes } =  this.props;
-    const {  msg, err, email, password } = this.state;
-    
+  render() {
+    const { classes } = this.props;
+    const { msg, err, email, password } = this.state;
+
     return (
-      <Fade in={true}>
-      <Grid container component="main" className={classes.root}>
-        <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component="div" elevation={6} square>
-          <HeaderBasic />
-          <div className={classes.paper}>
-              <Avatar className={classes.avatar}>
-                <LockOutlinedIcon className={classes.avatarIcon} />
-              </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <form className={classes.form} 
-              onSubmit={this.handleLogin}
-              noValidate
-              >
-              {err === "others" && (
-                <Paper className={classes.alert}>{msg}</Paper>
-              )}
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                value={email}
-                onChange={this.onChange("email")}
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                error={err === "email"}
-                helperText={err === "email" && msg}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                value={password}
-                onChange={this.onChange("password")}
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                error={err === "pass"}
-                helperText={err === "pass" && msg}
-                autoComplete="current-password"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                onClick={this.handleLogin}
-                className={classes.submit}
-              >
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+      <Fade in={true} >
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon className={classes.avatarIcon} />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <form className={classes.form} onSubmit={this.handleLogin} noValidate>
+            {err === "others" && <Paper className={classes.alert}>{msg}</Paper>}
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              value={email}
+              onChange={this.onChange("email")}
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              error={err === "email"}
+              helperText={err === "email" && msg}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              value={password}
+              onChange={this.onChange("password")}
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              error={err === "pass"}
+              helperText={err === "pass" && msg}
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={this.handleLogin}
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
               </Grid>
-            </form>
-          </div>
-        </Grid>
-      </Grid>
+              <Grid item>
+                <Link href="/signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
       </Fade>
     );
   }
- }
-export default connect(null, mapDispatchToProps)(withStyles(useStyles)(SignInSide));
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(withStyles(useStyles)(SignInSide));
