@@ -91,28 +91,28 @@ const DgrkPaymentInfoFormComplete = (props) => {
         </Grid>
 
         <Grid item xs={12} sm={6}>
-            <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel htmlFor="outlined-age-simple">Document Type</InputLabel>
-                <Select
-                  value={value.documentType}
-                  onChange={handleChange("documentType")}
-                  input={
-                    <OutlinedInput
-                      labelWidth={60}
-                      name="age"
-                      id="outlined-age-simple"
-                    />
-                  }
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="male">Access (Diamond) Bank</MenuItem>
-                  <MenuItem value="female">Gt Bank</MenuItem>
-                  <MenuItem value="others">Providous Bank</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
+          <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel htmlFor="outlined-age-simple">Document Type</InputLabel>
+              <Select
+                value={value.documentType}
+                onChange={handleChange("documentType")}
+                input={
+                  <OutlinedInput
+                    labelWidth={60}
+                    name="age"
+                    id="outlined-age-simple"
+                  />
+                }
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="male">Access (Diamond) Bank</MenuItem>
+                <MenuItem value="female">Gt Bank</MenuItem>
+                <MenuItem value="others">Providous Bank</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
       </Grid>
 
       <div className={classes.buttons}>

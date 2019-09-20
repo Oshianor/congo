@@ -65,12 +65,6 @@ const useStyles = theme => ({
 
  class SignInSide extends Component{
 
-  //   const inputLabel = React.useRef(null);
-  // const [labelWidth, setLabelWidth] = React.useState(0);
-  // React.useEffect(() => {
-  //   setLabelWidth(inputLabel.current.offsetWidth);
-  // }, []);
-
   state = {
     accountNumber: '',
     firstName: '',

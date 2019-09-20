@@ -4,13 +4,32 @@ import Card from "../../../components/Card/Card";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import MenuItem from '@material-ui/core/MenuItem';
 import ConfirmPayment from "./confirmPayment";
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1)
-  }
+  },
+  formControl: {
+    minWidth: 320, 
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: theme.spacing(5)
+  },
 }));
 
 const Dgda = () => {
@@ -19,12 +38,34 @@ const Dgda = () => {
   const [open, setOpen] = React.useState(false);
 
   function handleOpen() {
+    modalVisible(false);
     setOpen(true);
+
   }
 
   function handleClose() {
     setOpen(false);
   }
+
+  const [ value, setValue ] = React.useState({
+    customOffice: "",
+  });
+
+  
+  const [ modal, modalVisible ] = React.useState(false);
+
+  const handleClickOpen = () => {
+    modalVisible( true );
+  };
+
+  const handleModalClose = () => {
+    modalVisible( false );
+  };
+
+  const handleChange = name => event => {
+    setValue({ ...values, [name]: event.target.value });
+  };
+
 
   return (
     <Card
@@ -47,16 +88,27 @@ const Dgda = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField
-              autoComplete="fname"
-              name="firstName"
-              variant="outlined"
-              required
-              fullWidth
-              id="firstName"
-              label="Custom Office"
-              autoFocus
-            />
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel htmlFor="outlined-age-simple">Custom Office</InputLabel>
+              <Select
+                value={value.customOffice}
+                onChange={handleChange("customOffice")}
+                input={
+                  <OutlinedInput
+                    labelWidth={60}
+                    name="age"
+                    id="outlined-age-simple"
+                  />
+                }
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="male">warri HQ</MenuItem>
+                <MenuItem value="female">delta branch</MenuItem>
+                <MenuItem value="others">PowerPoint Branch</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -64,6 +116,7 @@ const Dgda = () => {
               required
               fullWidth
               id="lastName"
+              type='number'
               label="Liquidation No."
               name="lastName"
               autoComplete="lname"
@@ -80,7 +133,7 @@ const Dgda = () => {
               autoComplete="email"
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               variant="outlined"
               required
@@ -90,7 +143,7 @@ const Dgda = () => {
               name="residentialAddress"
               autoComplete="Residential Address"
             />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={6}>
             <TextField
               variant="outlined"
@@ -119,7 +172,7 @@ const Dgda = () => {
           <Grid item xs={12}>
             <Button
               variant="contained"
-              onClick={handleOpen}
+              onClick={handleClickOpen}
               size="large"
               color="primary"
             >
@@ -128,6 +181,31 @@ const Dgda = () => {
           </Grid>
         </Grid>
       </form>
+      <div>
+        <Dialog
+          open={modal}
+          // onClose={}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Status"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Valid or Invalid Bulletin
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions className={classes.buttons}>
+          <Button onClick={handleModalClose} color="primary">
+              Back
+            </Button>
+
+            <Button onClick={handleOpen} color="primary">
+              Proceed
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+
       <ConfirmPayment handleClose={handleClose} open={open} />
     </Card>
   );

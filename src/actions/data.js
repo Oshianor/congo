@@ -2,7 +2,8 @@ import {
   BENEFICIARY_TYPE, 
   DGDA_ROUTE, 
   DGRAD_ROUTE, 
-  DGRK_ROUTE 
+  DGRK_ROUTE,
+  ACCOUNT_ROUTE 
 } from "../types/types";
 
 
@@ -35,6 +36,14 @@ export const setDgradRoute = (routes) => {
 export const setDgrkRoute = (route) => {
   return {
     type: DGRK_ROUTE,
+    payload: route
+  };
+}
+
+// set account route
+export const setAccountRoute = (route) => {
+  return {
+    type: ACCOUNT_ROUTE,
     payload: route
   };
 }

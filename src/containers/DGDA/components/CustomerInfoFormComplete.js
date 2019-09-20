@@ -36,10 +36,10 @@ const CustomerCareComplete = (props) => {
             variant="outlined"
             required
             fullWidth
-            id="email"
-            label="Year of Declearation"
-            name="accountNumber"
-            autoComplete="Account Number"
+            id="totaltax"
+            label="Total Tax amount to be debited"
+            name="totaltax"
+            autoComplete="Total Tax"
             className={classes.textField}
           />
         </Grid>
@@ -52,7 +52,7 @@ const CustomerCareComplete = (props) => {
           onClick={handleClose}
           color="default"
         >
-          Cancel
+          Reject
         </Button>
         <Button variant="contained" size="medium" color="secondary">
           Confirm

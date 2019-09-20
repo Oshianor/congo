@@ -3,8 +3,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Fade from "@material-ui/core/Fade";
+import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -12,11 +12,7 @@ import { withRouter } from "next/router";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import HeaderBasic from "../../components/headers/headerBasic";
-import { connect } from 'react-redux';
-import isEmail from 'validator/lib/isEmail';
-import { setAccountRoute} from "../../actions/data"
-
+import HeaderBasic from "../../../src/components/headers/headerBasic";
 // import { config } from "../../../config"
 // import axios from "axios";
 
@@ -54,48 +50,33 @@ const useStyles = theme => ({
   }
 });
 
-
-const mapDispatchToProps = {
-  setAccountRoute 
-}
-
  class SignInSide extends Component {
 
   state = {
-    email: "",
-    password: "",
+    otp: "",
     err: "",
-    msg: "",
+    msg: ""
   };
 
   handleLogin = async e => {
     e.preventDefault();
-    const { email, password } = this.state;
-    const { router, setAccountRoute } = this.props;
-    setAccountRoute('enterOtp')
+    const { otp } = this.state;
+    const { router } = this.props;
 
     this.setState({
       err: "",
       msg: ""
     });
 
-    if (!isEmail(email)) {
+    if (otp == '') {
       this.setState({
-        err: "email",
-        msg: "Invalid Email"
+        err: "otp",
+        msg: "Invalid otp"
       });
       return;
     }
 
-    if (password === "") {
-      this.setState({
-        err: "pass",
-        msg: "Paasword can't be empty"
-      });
-      return;
-    }
-
-    
+    router.push('/dashboard/in')
   }
 
 
@@ -107,7 +88,7 @@ const mapDispatchToProps = {
 
   render () {
     const { classes } =  this.props;
-    const {  msg, err, email, password } = this.state;
+    const {  msg, err, otp } = this.state;
     
     return (
       <Fade in={true}>
@@ -135,31 +116,18 @@ const mapDispatchToProps = {
                 margin="normal"
                 required
                 fullWidth
-                value={email}
-                onChange={this.onChange("email")}
+                type="number"
+                value={otp}
+                onChange={this.onChange("otp")}
                 id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                label="Enter OTP"
+                name="otp"
+                autoComplete="otp"
                 autoFocus
-                error={err === "email"}
-                helperText={err === "email" && msg}
+                error={err === "otp"}
+                helperText={err === "otp" && msg}
               />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                value={password}
-                onChange={this.onChange("password")}
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                error={err === "pass"}
-                helperText={err === "pass" && msg}
-                autoComplete="current-password"
-              />
+            
               <Button
                 type="submit"
                 fullWidth
@@ -190,4 +158,4 @@ const mapDispatchToProps = {
     );
   }
  }
-export default connect(null, mapDispatchToProps)(withStyles(useStyles)(SignInSide));
+export default withRouter(withStyles(useStyles)(SignInSide));
