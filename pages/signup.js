@@ -249,7 +249,7 @@ const useStyles = theme => ({
          }
        });
        console.log("register", register);
-       router.push("/mailverification");
+       router.push("/mailverificationsent?e=" + email);
     } catch (error) {
       console.log(error);
       console.log(error.response);
