@@ -34,9 +34,20 @@ const styles = theme => ({
   input: {
     display: "none"
   },
+  topBox:{
+    marginTop: theme.spacing(9),
+    width: '100%',
+    display: "flex",
+    justifyContent: "center",
+    alignSelf: "center",
+  },
   box: {
-    width: 105,
-    height: 105,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    width: 250,
+    height: 250,
     border: "1px solid gray",
     borderRadius: 5
   },
@@ -127,6 +138,13 @@ class DgrkLiquidationPaymentForm extends Component {
               />
             </Grid>
           </Grid>
+          <div className={classes.topBox}>
+            <div className={classes.box}>
+              <Typography>
+                Details of Document.
+              </Typography>
+            </div>
+          </div>
           <div className={classes.buttons}>
             <Button onClick={this.handleClose} variant="contained" size="medium">
               Cancel

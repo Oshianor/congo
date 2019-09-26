@@ -3,11 +3,16 @@ import { connect } from 'react-redux';
 import Card from "../../../components/Card/Card";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import DgradInfoFormPay from './DgrkLiquidationinfoFormPayment';
+import { setDgrkRoute } from "../../../actions/data";
 
+const mapDispatchToProps = {
+  setDgrkRoute
+};
 
 
 const styles = theme => ({
@@ -68,6 +73,11 @@ class DgrkLiquidationPaymentFormAccountDetails extends Component {
     })
   }
 
+  
+  handleBack = () => {
+    const { setDgrkRoute } = this.props;
+    setDgrkRoute("taxDocument");
+  }
 
 
 	render() {
@@ -87,7 +97,7 @@ class DgrkLiquidationPaymentFormAccountDetails extends Component {
                 required
                 fullWidth
                 id="email"
-                label="benficiary Institution"
+                label="Benficiary Institution"
                 name="accountNumber"
                 autoComplete="Account No"
                 className={classes.textField}
@@ -111,9 +121,12 @@ class DgrkLiquidationPaymentFormAccountDetails extends Component {
                 required
                 fullWidth
                 id="lastName"
-                label="Balance Sufficiency"
-                name="balanceSuficiency"
+                label="Available Balance"
+                name="availableBalance"
                 autoComplete="lname"
+                InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }}
               />
             </Grid>             
           </Grid>
@@ -121,10 +134,10 @@ class DgrkLiquidationPaymentFormAccountDetails extends Component {
             <Button
               variant="outlined"
               size="medium"
-              onClick={this.handleClose}
+              onClick={this.handleBack}
               color="default"
             >
-              Cancel
+              Back
             </Button>
             <Button onClick={this.handleOpen} variant="contained" size="medium" color="primary">
               Process Payment
@@ -141,4 +154,4 @@ class DgrkLiquidationPaymentFormAccountDetails extends Component {
 	}
 }
 
-export default (withStyles(styles)(DgrkLiquidationPaymentFormAccountDetails));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(DgrkLiquidationPaymentFormAccountDetails));

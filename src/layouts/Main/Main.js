@@ -50,7 +50,7 @@ const Main = props => {
   };
 
 
-  const [ modal, modalVisible ] = React.useState(true);
+  const [ modal, modalVisible ] = React.useState(false);
 
   const handleClickOpen = () => {
     modalVisible( true );

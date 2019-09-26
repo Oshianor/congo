@@ -4,10 +4,15 @@ import Card from "../../../components/Card/Card";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import SelfAndThirdPartyFormPay from './selfAndThirdPartyInfoFormComplete';
+import { setBeneficiaryType } from "../../../actions/data";
 
+const mapDispatchToProps = {
+  setBeneficiaryType
+};
 
 
 const styles = theme => ({
@@ -87,10 +92,10 @@ class SelfFormAccountDetails extends Component {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="benficiary Institution"
+                id="beneficiaryInstitution"
+                label="Benficiary Institution"
                 name="accountNumber"
-                autoComplete="Account No"
+                autoComplete="Benficiary Institution"
                 className={classes.textField}
               />
             </Grid>
@@ -112,9 +117,12 @@ class SelfFormAccountDetails extends Component {
                 required
                 fullWidth
                 id="lastName"
-                label="Balance Sufficiency"
-                name="balanceSuficiency"
+                label="Available Balance"
+                name="availableBalance"
                 autoComplete="lname"
+                InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }}
               />
             </Grid>             
           </Grid>
@@ -125,7 +133,7 @@ class SelfFormAccountDetails extends Component {
               onClick={this.handleClose}
               color="default"
             >
-              Cancel
+              Back
             </Button>
             <Button onClick={this.handleOpen} variant="contained" size="medium" color="primary">
               Process Payment

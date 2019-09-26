@@ -4,6 +4,11 @@ import Card from "../../../components/Card/Card";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Tables from "./CustomerInfoFormTable";
 import CustomerCareComplete from "./CustomerInfoFormComplete";
 
@@ -19,8 +24,21 @@ const CustomerCare = () => {
 
   const [open, setOpen] = React.useState(false);
 
+  const [ modal, modalVisible ] = React.useState(false);
+
+  const handleModalClose = () => {
+    modalVisible( false );
+  };
+
+  function handleModalOpen() {
+    modalVisible( false );
+
+  }
+
   function handleOpen() {
     setOpen(true);
+    modalVisible( true );
+
   }
 
   function handleClose() {
@@ -49,6 +67,33 @@ const CustomerCare = () => {
             </Button>
           </Grid>
         </Grid>
+        <div>
+          <Dialog
+            open={modal}
+            // onClose={}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"Status"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Unsuccessful or Successful with a Reason (e.g Insufficient Funds )
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions className={classes.buttons}>
+            <Button onClick={handleModalClose} color="primary">
+                Back
+              </Button>
+
+              <Button
+              onClick={handleModalOpen}
+              color="primary">
+                Proceed
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+
         <CustomerCareComplete open={open} handleClose={handleClose} />
       </form>
     </Card>

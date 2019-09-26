@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(15)
     // display: 'flex',
     // justifyContent: "space-be",
-    // alignItems: "center",
+    // alignItems: "c enter",
     // [theme.breakpoints.only("xs")]: {
 
     // }

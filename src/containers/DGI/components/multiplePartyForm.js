@@ -4,14 +4,16 @@ import Card from "../../../components/Card/Card";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import MenuItem from '@material-ui/core/MenuItem';
-import Add from "@material-ui/icons/Add";
+import Tooltip from '@material-ui/core/Tooltip';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import MultiplePartyFormAdd from './multiplePartyFormAdd';
 import { setBeneficiaryType } from "../../../actions/data"
 
 const mapDispatchToProps = {
@@ -21,28 +23,44 @@ const mapDispatchToProps = {
 
 const styles = theme => ({
   form: {
-    marginLeft: 5
+    // marginLeft: 5
+    padding: 10
   },
   buttons: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
     marginRight: theme.spacing(2),
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     alignItems: "center"
   },
   input: {
     display: "none"
   },
   box: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 105,
     height: 105,
     border: "1px solid gray",
     borderRadius: 5
   },
   formControl: {
-    minWidth: 300, 
+    width: '100%', 
     // marginBottom: 10
   },
+  fab: {
+    marginBottom: theme.spacing(1),
+    height: 30,
+    width: 30
+  },
+  fabAdd: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+
+  },
+ 
 });
 
 
@@ -57,13 +75,15 @@ function mapStateToProps(state) {
 class MultiplePartyForm extends Component {
 
   state = {
-    documentType: '',
-  
+    beneficiaryInstitution: '',
+    total: '',
+    taxType: '',
+    multiple: [MultiplePartyFormAdd]
   }
 
   handleConfirms= () => {
     const { setBeneficiaryType } = this.props;
-     setBeneficiaryType("selfAndThirdPartyFormAccount");
+     setBeneficiaryType("multiplePartyFormAccount");
   }
 
   handleChange = value => event => {
@@ -72,75 +92,84 @@ class MultiplePartyForm extends Component {
       });
   };
 
+  handleBack =() => {
+    const { setBeneficiaryType } = this.props
+    setBeneficiaryType("");
+  }
+
+  handleAddTextfield = () => {
+    const { multiple }  = this.state;
+
+    if (multiple.length !== 4) {
+      var multiples  = this.state.multiple.push(MultiplePartyFormAdd)
+      this.setState({
+        multiples
+      });
+    }
+    return 
+  }
+
+
+  handleDelete = (index) => {
+    const { multiple }  = this.state;
+    
+    console.log("index", index);
+
+    if (multiple.length >= 2 ) {
+      multiple.splice(index, 1)
+      this.setState({
+        multiple
+      })
+    }
+  }
+
+  
+
 
 	render() {
     const { dgi, classes } = this.props;
     const checked = dgi.beneficiaryType === "Multiple";
 
     const {
-      documentType,
-      
+      beneficiaryInstitution,
+      total,
+      taxType,
+      multiple
     } = this.state
+
+
+    // render the component
+    const data = multiple.map((Element, index) => { return <Element key={index} index={index} 
+     multipleLength ={multiple.length} 
+     handleDelete = {this.handleDelete} />
+   })
+
+    
 		return (
       <Card
         title={dgi.beneficiaryType + " DGI Payment"}
         subtitle="Please fill the below form"
       >
         <form className={classes.form}>
-          <Grid container>
-           
-          <Grid item xs={12} sm={6}>
-            <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel htmlFor="outlined-age-simple">Document Type</InputLabel>
-                <Select
-                  value={documentType}
-                  onChange={this.handleChange("documentType")}
-                  input={
-                    <OutlinedInput
-                      labelWidth={60}
-                      name="age"
-                      id="outlined-age-simple"
-                    />
-                  }
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="male">PDF</MenuItem>
-                  <MenuItem value="female">WOrd</MenuItem>
-                  <MenuItem value="others">PowerPoint</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-           
-          </Grid>
-          
-          <div style={{marginTop: 15}}>
-          <TextField
-            variant="outlined"
-            required
-            id="total"
-            label="Total"
-            name="total"
-            disabled
-            autoComplete="Total"
-          />
+          <div className={classes.fabAdd}>
+            <Tooltip title="Add" aria-label="add">
+              <Fab 
+              onClick={this.handleAddTextfield}
+              color="primary" aria-label="add" className={classes.fab}>
+                <AddIcon  className={classes.add}/>
+              </Fab>
+            </Tooltip>
           </div>
-                  
-          <div style={{marginTop: 15}}>
-          <Button
-              variant="outlined"
-              size="medium"
-              // onClick={handleClose}
-              color="primary"
-            >
-              Add
-              <Add />
-            </Button>
-            </div>
+          <div className={classes.inputs}>
+            {data}
 
-
+          </div>
           <div className={classes.buttons}>
+            <Button 
+              onClick= {this.handleBack}
+              variant="contained" size="medium" color="default">
+              Back
+            </Button>
             <Button 
               onClick= {this.handleConfirms}
               variant="contained" size="medium" color="primary">

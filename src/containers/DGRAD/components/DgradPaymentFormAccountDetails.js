@@ -5,7 +5,9 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from "@material-ui/core/styles";
+import { setDgradRoute } from "../../../actions/data"
 import DgradInfoFormPay from './DgradPaymentInfoFormComplete';
 
 
@@ -41,6 +43,9 @@ const styles = theme => ({
   }
 });
 
+const mapDispatchToProps = {
+  setDgradRoute 
+}
 
 
 
@@ -68,6 +73,11 @@ class DgradPaymentFormAccountDetails extends Component {
     })
   }
 
+  handleBack = () => {
+    const { setDgradRoute } = this.props;
+    setDgradRoute('paymentForm')
+  }
+
 
 
 	render() {
@@ -87,9 +97,9 @@ class DgradPaymentFormAccountDetails extends Component {
                 required
                 fullWidth
                 id="email"
-                label="benficiary Institution"
-                name="accountNumber"
-                autoComplete="Account No"
+                label="Benficiary Institution"
+                name="beneficiaryInstitution"
+                autoComplete="Benficiary Institution"
                 className={classes.textField}
               />
             </Grid>
@@ -111,9 +121,12 @@ class DgradPaymentFormAccountDetails extends Component {
                 required
                 fullWidth
                 id="lastName"
-                label="Balance Sufficiency"
-                name="balanceSuficiency"
+                label="Available Balance"
+                name="availableBalance"
                 autoComplete="lname"
+                InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }}
               />
             </Grid>             
           </Grid>
@@ -121,10 +134,10 @@ class DgradPaymentFormAccountDetails extends Component {
             <Button
               variant="outlined"
               size="medium"
-              onClick={this.handleClose}
+              onClick={this.handleBack}
               color="default"
             >
-              Cancel
+              Back
             </Button>
             <Button onClick={this.handleOpen} variant="contained" size="medium" color="primary">
               Process Payment
@@ -141,4 +154,4 @@ class DgradPaymentFormAccountDetails extends Component {
 	}
 }
 
-export default (withStyles(styles)(DgradPaymentFormAccountDetails));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(DgradPaymentFormAccountDetails));

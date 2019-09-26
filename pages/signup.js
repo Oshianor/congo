@@ -538,7 +538,7 @@ const useStyles = theme => ({
                     >
                       <InputLabel htmlFor="outlined-age-simple">
                         {" "}
-                        Tax Insttitution Benet
+                        Tax Insttitution Beneficiary
                       </InputLabel>
                       <Select
                         value={taxInstitutionBenet}

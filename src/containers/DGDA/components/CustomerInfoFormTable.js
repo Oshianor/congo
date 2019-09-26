@@ -24,7 +24,7 @@ const rows = [
     0,
     'Olashile Adegbite',
     '123456',
-    '164000',
+    '164,000.00',
     'Savings',
     'InActive'
   ),
@@ -32,7 +32,7 @@ const rows = [
     1,
     'Abundance Oshianor',
     '123456',
-    '164000',
+    '1,640,000.00',
     'Savings',
     'Active'
   ),
@@ -40,7 +40,7 @@ const rows = [
     2,
     'Ayotunde Oseleye',
     '123456',
-    '174000',
+    '174,000.00',
     'Savings',
     'InActive'
   ),
@@ -48,7 +48,7 @@ const rows = [
     3,
     'Olashile Adegbite',
     '123456',
-    '84000',
+    '1,840,000.00',
     'Savings',
     'Active'
   ),

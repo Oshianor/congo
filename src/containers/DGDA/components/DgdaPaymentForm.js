@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
+import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Dialog from '@material-ui/core/Dialog';
@@ -14,7 +15,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import MenuItem from '@material-ui/core/MenuItem';
-import ConfirmPayment from "./confirmPayment";
+import GenerateID from './generateReferenceId'
+import { connect } from 'react-redux';
+
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +26,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1)
   },
   formControl: {
-    minWidth: 320, 
+    width: '100%',
+    // minWidth: 120
   },
   buttons: {
     display: "flex",
@@ -32,24 +37,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Dgda = () => {
+const DgdaPaymentForm = (props) => {
   const classes = useStyles();
 
-  const [open, setOpen] = React.useState(false);
-
-  function handleOpen() {
-    modalVisible(false);
-    setOpen(true);
-
-  }
-
-  function handleClose() {
-    setOpen(false);
-  }
+ 
 
   const [ value, setValue ] = React.useState({
     customOffice: "",
   });
+
+  const [ isOpen, setIsOpen ] = React.useState(false)
 
   
   const [ modal, modalVisible ] = React.useState(false);
@@ -62,9 +59,21 @@ const Dgda = () => {
     modalVisible( false );
   };
 
+  function handleOpen() {
+    setIsOpen(true);
+    modalVisible( false );
+
+  }
+
+  function handleClose() {
+    setIsOpen(false);
+  }
+
   const handleChange = name => event => {
     setValue({ ...values, [name]: event.target.value });
   };
+
+
 
 
   return (
@@ -95,7 +104,7 @@ const Dgda = () => {
                 onChange={handleChange("customOffice")}
                 input={
                   <OutlinedInput
-                    labelWidth={60}
+                    labelWidth={100}
                     name="age"
                     id="outlined-age-simple"
                   />
@@ -131,6 +140,9 @@ const Dgda = () => {
               label="Liquidation Amount"
               name="email"
               autoComplete="email"
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }}
             />
           </Grid>
           {/* <Grid item xs={12} sm={6}>
@@ -199,19 +211,21 @@ const Dgda = () => {
               Back
             </Button>
 
-            <Button onClick={handleOpen} color="primary">
+            <Button
+            onClick={handleOpen}
+            color="primary">
               Proceed
             </Button>
           </DialogActions>
         </Dialog>
       </div>
-
-      <ConfirmPayment handleClose={handleClose} open={open} />
+      
+      <GenerateID isOpen={isOpen} handleClose={handleClose} />
     </Card>
   );
 };
 
-export default Dgda;
+export default DgdaPaymentForm;
 
 
 

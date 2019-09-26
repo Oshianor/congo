@@ -16,8 +16,7 @@ const mapDispatchToProps = {
 
 const styles = theme => ({
   root: {
-    padding: theme.spacing(1),
-    paddingLeft: theme.spacing(3)
+    padding: 10
 
   },
   buttons: {
@@ -33,6 +32,9 @@ const styles = theme => ({
     display: "none"
   },
   box: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 105,
     height: 105,
     border: "1px solid gray",
@@ -50,15 +52,41 @@ const styles = theme => ({
 
 
 class DgrkLiquidationPaymentTaxDocument extends Component {
-
+  state = {
+    taxDocumentImage: ''
+  }
 
   handleProcess = () => {
     const { setDgrkRoute } = this.props;
     setDgrkRoute("accountDetails");
   }
 
+  
+  handleBack = () => {
+    const { setDgrkRoute } = this.props;
+    setDgrkRoute("paymentForm");
+  }
+
+  handleImage = value => event => {
+    let file = event.target.files[0];
+    let reader = new FileReader();
+    let self = this;
+    reader.readAsDataURL(file);
+    reader.onload = function() {
+      self.setState({
+        [value]: reader.result
+      });
+    };
+    reader.onerror = function(error) {
+      console.log("Error: ", error);
+    };
+  };
+
 	render() {
-		const { classes } = this.props;
+    const { classes } = this.props;
+    const { 
+      taxDocumentImage 
+    } = this.state
 		return (
       <Card
         title={" DGRk Document Liquidation Payment"}
@@ -69,11 +97,16 @@ class DgrkLiquidationPaymentTaxDocument extends Component {
             <Grid item xs={12}>
               <Typography variant="h6" className={classes.tax}>Tax Document</Typography>
               <div className={classes.imgRoot}>
-                <div className={classes.box}></div>
+                <div className={classes.box}>
+                  { taxDocumentImage !== "" && (
+                    <img src={taxDocumentImage} width='102' height='102' />
+                  )}
+                </div>
                 <input
                   accept="image/*"
                   className={classes.input}
                   id="contained-button-file"
+                  onChange={this.handleImage('taxDocumentImage')}
                   multiple
                   type="file"
                 />
@@ -81,7 +114,7 @@ class DgrkLiquidationPaymentTaxDocument extends Component {
                   <Button
                     variant="contained"
                     component="span"
-                    size="small"
+                    size="small" 
                     className={classes.button}
                   >
                     Upload
@@ -94,7 +127,7 @@ class DgrkLiquidationPaymentTaxDocument extends Component {
             <Button
               variant="outlined"
               size="medium"
-              // onClick={handleClose}
+              onClick={this.handleBack}
               color="default"
             >
               Back

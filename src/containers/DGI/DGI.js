@@ -6,6 +6,7 @@ import MultiplePartyForm from './components/multiplePartyForm';
 import SelfAndThirdPartyForm from './components/selfAndThirdPartyForm';
 import SelfAndThirdPartyFormAccountDetails from './components/selfAndThirdPartyFormAccountDetails';
 import DidYouKnow from '../../components/DoYouKnow/DoYouKnow';
+import MultiplePartyFormAccountDetails from './components/multiplePartyFormAccountDetails';
 import Grid from "@material-ui/core/Grid";
 
 
@@ -42,6 +43,7 @@ const DGI = (props) => {
             <SelfAndThirdPartyForm />
              ) : ( dgi.beneficiaryType === "Multiple" && <MultiplePartyForm /> )}
           {dgi.beneficiaryType === 'selfAndThirdPartyFormAccount' && ( <SelfAndThirdPartyFormAccountDetails />)}
+          {dgi.beneficiaryType === 'multiplePartyFormAccount' && ( <MultiplePartyFormAccountDetails />)}
         </Grid>
         <Grid item xs={12} sm={5}>
           <DidYouKnow />
