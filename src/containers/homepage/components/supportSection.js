@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   headText: {
-    fontSize: 70,
+    fontSize: 50,
     lineHeight: 1.5,
     letterSpacing: 1,
     textAlign: "center",
@@ -53,14 +53,11 @@ export default function AutomatedSection() {
         <Grid container justify="center" alignItems="center">
           <Grid item xs="12" sm="4" md="6">
             <Typography variant="h1" className={classes.headText}>
-              Unlimited Theme Selection
+               ONLINE TAX PAYMENT MADE EASY 
             </Typography>
 
             <Typography variant="h5" className={classes.bodyText}>
-              Unlimited Themes Selection Unlimited Themes Selection Unlimited
-              Themes Selection Unlimited Themes Selection Unlimited Themes
-              Selection Unlimited Themes Selection Unlimited Themes
-              SelectionUnlimited Themes SelectionUnlimited Themes Selection
+              Make all your tax payment in one place 
             </Typography>
           </Grid>
           <Grid item xs="12" sm="8" md="6">
