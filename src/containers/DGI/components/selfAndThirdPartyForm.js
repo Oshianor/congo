@@ -122,7 +122,7 @@ class SelfAndThirdPartyForm extends Component {
                 onChange={this.handleChange("beneficiaryIstitution")}
                 input={
                   <OutlinedInput
-                    labelWidth={100}
+                    labelWidth={150}
                     name="age"
                     id="outlined-age-simple"
                   />
@@ -145,7 +145,7 @@ class SelfAndThirdPartyForm extends Component {
                 onChange={this.handleChange("typeOfDeclaration")}
                 input={
                   <OutlinedInput
-                    labelWidth={100}
+                    labelWidth={150}
                     name="age"
                     id="outlined-age-simple"
                   />

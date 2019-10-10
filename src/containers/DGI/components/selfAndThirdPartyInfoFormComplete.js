@@ -111,7 +111,7 @@ const SelfAndThirdPartyFormPay = (props) => {
         >
           Cancel
         </Button>
-        <Button onClick={handleClickOpen} variant="contained" size="medium" color="primary">
+        <Button onClick={handleClickOpen} variant="contained" size="medium" color="secondary">
           Confirm
         </Button>
       </div>

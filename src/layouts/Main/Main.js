@@ -114,7 +114,7 @@ const Main = props => {
         />
         <main className={classes.content}>
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </main>
       </div>
 

@@ -86,7 +86,7 @@ class DgradPaymentFormAccountDetails extends Component {
 		
 		return (
       <Card
-        title= " DGI Form2 Payment"
+        title= " DGRAD Form Payment"
         subtitle="Please fill the below form"
       >
         <form className={classes.root}>

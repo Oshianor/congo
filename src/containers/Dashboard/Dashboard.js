@@ -38,7 +38,9 @@ const Dashboard = () => {
             <TotalProfit />
           </Grid>
         </Grid>
-        <Circle />
+        <div>
+          <Circle />
+        </div>
       </Container>
     </div>
   );

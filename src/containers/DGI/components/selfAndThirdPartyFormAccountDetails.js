@@ -69,9 +69,8 @@ class SelfFormAccountDetails extends Component {
   }
   
   handleClose = () => {
-    this.setState({
-      open: false
-    })
+    const { setBeneficiaryType } = this.props;
+    setBeneficiaryType("Self" || "Third Party")
   }
 
 
@@ -150,4 +149,4 @@ class SelfFormAccountDetails extends Component {
 	}
 }
 
-export default (withStyles(styles)(SelfFormAccountDetails));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(SelfFormAccountDetails));

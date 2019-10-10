@@ -11,15 +11,28 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Tables from "./CustomerInfoFormTable";
 import CustomerCareComplete from "./CustomerInfoFormComplete";
+import { setDgdaRoute } from "../../../actions/data";
+import { connect } from 'react-redux';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(1)
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'space-between'
   }
 }));
 
-const CustomerCare = () => {
+const mapDispatchToProps = {
+  setDgdaRoute
+};
+
+
+const CustomerCare = (props) => {
+  const { setDgdaRoute } = props;
+
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -41,6 +54,10 @@ const CustomerCare = () => {
 
   }
 
+  const handleBack = () => {
+    setDgdaRoute("paymentForm");
+  }
+
   function handleClose() {
     setOpen(false);
   }
@@ -57,14 +74,23 @@ const CustomerCare = () => {
             <Tables />
           </div>
           <Grid item xs={12}>
-            <Button
-              variant="contained"
-              onClick={handleOpen}
-              size="small"
-              color="primary"
-            >
-              Proceed
-            </Button>
+            <div className={classes.buttons}>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={handleBack}
+              >
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleOpen}
+                size="small"
+                color="primary"
+              >
+                Proceed
+              </Button>
+            </div>
           </Grid>
         </Grid>
         <div>
@@ -100,4 +126,4 @@ const CustomerCare = () => {
   );
 };
 
-export default CustomerCare;
+export default connect(null, mapDispatchToProps)(CustomerCare);
