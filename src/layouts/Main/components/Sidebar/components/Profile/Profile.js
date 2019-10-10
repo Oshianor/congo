@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 // import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -28,7 +28,7 @@ const Profile = props => {
 
   const user = {
     name: "Olashile Adegbite",
-    avatar: "https://picsum.photos/150",
+    avatar: "/static/images/group-avatar.svg",
     bio: "Brain Director"
   };
 
