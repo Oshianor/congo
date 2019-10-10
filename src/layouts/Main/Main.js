@@ -50,7 +50,7 @@ const Main = props => {
   };
 
 
-  const [ modal, modalVisible ] = React.useState(false);
+  const [ modal, modalVisible ] = React.useState(true);
 
   const handleClickOpen = () => {
     modalVisible( true );
@@ -79,7 +79,7 @@ const Main = props => {
         err: 'password',
         msg: 'password can not be empty'
       })
-      return
+      return;
     }
 
     if ( value.password !== value.confirmPassword) {
@@ -87,7 +87,7 @@ const Main = props => {
         err: 'confirmPassword',
         msg: 'password does not match'
       })
-      return
+      return;
     }
     
     modalVisible( false )

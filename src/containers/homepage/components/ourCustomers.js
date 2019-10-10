@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     flexWrap: "wrap",
     alignItems: "center",
+    marginTop: theme.spacing(4),
     [theme.breakpoints.down("sm")]: {
       justifyContent: "center"
     }
@@ -81,34 +82,34 @@ function OurCustomers() {
 	return (
     <Container maxWidth="lg" className={classes.container}>
       <Typography className={classes.headline} variant="overline">
-        OUR FRIENDS IN HIGH PLACES
+        TAX PAYMENT SERVICES 
       </Typography>
 
       <div className={classes.cong}>
         <Card className={classes.root}>
-          <div className={"MuiCard__head"}>
+          {/* <div className={"MuiCard__head"}>
             <Avatar
               className={"MuiAvatar-root"}
               src={
                 "http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Polymer_Project_logo.png/240px-Polymer_Project_logo.png"
               }
             />
-          </div>
+          </div> */}
           <Divider className={"MuiDivider-root"} light />
           <CardContent className={"MuiCardContent-root"}>
-            <Typography
+            {/* <Typography
               className={"MuiTypography--overline"}
               variant={"overline"}
               gutterBottom
             >
               Google Inc.
-            </Typography>
+            </Typography> */}
             <Typography
               className={"MuiTypography--heading"}
               variant={"h5"}
               gutterBottom
             >
-              Project Polymer
+              DGDA Payment
             </Typography>
             <Typography className={"MuiTypography--subheading"} gutterBottom>
               Web components usher in a new era of web development based on
@@ -117,29 +118,29 @@ function OurCustomers() {
           </CardContent>
         </Card>
         <Card className={classes.root}>
-          <div className={"MuiCard__head"}>
+          {/* <div className={"MuiCard__head"}>
             <Avatar
               className={"MuiAvatar-root"}
               src={
                 "http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Polymer_Project_logo.png/240px-Polymer_Project_logo.png"
               }
             />
-          </div>
+          </div> */}
           <Divider className={"MuiDivider-root"} light />
           <CardContent className={"MuiCardContent-root"}>
-            <Typography
+            {/* <Typography
               className={"MuiTypography--overline"}
               variant={"overline"}
               gutterBottom
             >
               Google Inc.
-            </Typography>
+            </Typography> */}
             <Typography
               className={"MuiTypography--heading"}
               variant={"h5"}
               gutterBottom
             >
-              Project Polymer
+              DGI Payment
             </Typography>
             <Typography className={"MuiTypography--subheading"} gutterBottom>
               Web components usher in a new era of web development based on
@@ -148,29 +149,29 @@ function OurCustomers() {
           </CardContent>
         </Card>
         <Card className={classes.root}>
-          <div className={"MuiCard__head"}>
+          {/* <div className={"MuiCard__head"}>
             <Avatar
               className={"MuiAvatar-root"}
               src={
                 "http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Polymer_Project_logo.png/240px-Polymer_Project_logo.png"
               }
             />
-          </div>
+          </div> */}
           <Divider className={"MuiDivider-root"} light />
           <CardContent className={"MuiCardContent-root"}>
-            <Typography
+            {/* <Typography
               className={"MuiTypography--overline"}
               variant={"overline"}
               gutterBottom
             >
               Google Inc.
-            </Typography>
+            </Typography> */}
             <Typography
               className={"MuiTypography--heading"}
               variant={"h5"}
               gutterBottom
             >
-              Project Polymer
+              DGRAD Payment
             </Typography>
             <Typography className={"MuiTypography--subheading"} gutterBottom>
               Web components usher in a new era of web development based on
@@ -179,29 +180,29 @@ function OurCustomers() {
           </CardContent>
         </Card>
         <Card className={classes.root}>
-          <div className={"MuiCard__head"}>
+          {/* <div className={"MuiCard__head"}>
             <Avatar
               className={"MuiAvatar-root"}
               src={
                 "http://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Polymer_Project_logo.png/240px-Polymer_Project_logo.png"
               }
             />
-          </div>
+          </div> */}
           <Divider className={"MuiDivider-root"} light />
           <CardContent className={"MuiCardContent-root"}>
-            <Typography
+            {/* <Typography
               className={"MuiTypography--overline"}
               variant={"overline"}
               gutterBottom
             >
               Google Inc.
-            </Typography>
+            </Typography> */}
             <Typography
               className={"MuiTypography--heading"}
               variant={"h5"}
               gutterBottom
             >
-              Project Polymer
+              DGRK  Liquidation
             </Typography>
             <Typography className={"MuiTypography--subheading"} gutterBottom>
               Web components usher in a new era of web development based on
