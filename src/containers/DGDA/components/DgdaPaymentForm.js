@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: theme.spacing(5)
+    // marginTop: theme.spacing(5)
   },
 }));
 
@@ -70,7 +70,7 @@ const DgdaPaymentForm = (props) => {
   }
 
   const handleChange = name => event => {
-    setValue({ ...values, [name]: event.target.value });
+    setValue({ ...value, [name]: event.target.value });
   };
 
 
@@ -200,20 +200,22 @@ const DgdaPaymentForm = (props) => {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Status"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{"Bulletin Status"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Valid or Invalid Bulletin
+              Valid or Invalid Bulletin, Click proceed to continue.
             </DialogContentText>
           </DialogContent>
           <DialogActions className={classes.buttons}>
-          <Button onClick={handleModalClose} color="primary">
+          <Button onClick={handleModalClose} color="primary"
+            style={{ color: 'red'}}>
               Back
             </Button>
 
             <Button
-            onClick={handleOpen}
-            color="primary">
+              onClick={handleOpen}
+              color="secondary"
+              style={{ background:'#014086', color: 'white'}}>
               Proceed
             </Button>
           </DialogActions>

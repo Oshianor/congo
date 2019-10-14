@@ -130,11 +130,14 @@ const SelfAndThirdPartyFormPay = (props) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions className={classes.buttons}>
-          <Button onClick={handleModalClose} color="primary">
+          <Button onClick={handleModalClose} color="primary"
+            style={{ color: 'red'}}>
               Cancel
             </Button>
             
-            <Button onClick={handleModalOk} color="primary">
+            <Button onClick={handleModalOk} color="primary"
+              style={{ background:'#014086', color: 'white'}}
+            >
               Proceed
             </Button>
           </DialogActions>

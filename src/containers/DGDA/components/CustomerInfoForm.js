@@ -100,20 +100,24 @@ const CustomerCare = (props) => {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">{"Status"}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{"Account Status"}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 Unsuccessful or Successful with a Reason (e.g Insufficient Funds )
               </DialogContentText>
             </DialogContent>
             <DialogActions className={classes.buttons}>
-            <Button onClick={handleModalClose} color="primary">
+            <Button onClick={handleModalClose} color="primary"
+              style={{ color: 'red'}}>
+            
                 Back
               </Button>
 
               <Button
               onClick={handleModalOpen}
-              color="primary">
+              color="primary"
+              style={{ background:'#014086', color: 'white'}}
+              >
                 Proceed
               </Button>
             </DialogActions>

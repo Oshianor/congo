@@ -13,6 +13,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import HeaderBasic from "../../components/headers/headerBasic";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { blue } from '@material-ui/core/colors';
 import { connect } from "react-redux";
 import isEmail from "validator/lib/isEmail";
 import { setAccountRoute } from "../../actions/data";
@@ -49,6 +51,14 @@ const useStyles = theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  buttonProgress: {
+    color: blue[500],
+    position: 'absolute',
+    top: '50%',
+    left: '75%',
+    marginTop: 7,
+    marginLeft: 7,
   }
 });
 
@@ -57,18 +67,47 @@ const mapDispatchToProps = {
 };
 
 class SignInSide extends Component {
-  state = {
-    email: "",
-    password: "",
-    err: "",
-    msg: ""
-  };
+  constructor() {
+    super();
+    
+    this.timer = null;
+
+    this.state = {
+      email: "",
+      password: "",
+      err: "",
+      msg: "",
+      isLoading: false
+    };
+  }
+
+
+
+
+  componentDidUnMount() {
+    clearTimeout(this.timer);
+  }
 
   handleLogin = async e => {
     e.preventDefault();
     const { email, password } = this.state;
     const { router, setAccountRoute } = this.props;
-    setAccountRoute("enterOtp");
+
+
+    this.setState({
+      isLoading: true
+    })
+
+
+    this.timer = setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+      setAccountRoute("enterOtp");
+    }, 4000)
+
+
+    
 
     this.setState({
       err: "",
@@ -90,7 +129,16 @@ class SignInSide extends Component {
       });
       return;
     }
+
+   
+      
   };
+
+
+
+  // handleButtonClick = () => {
+   
+  // };
 
   onChange = name => e => {
     this.setState({
@@ -100,7 +148,7 @@ class SignInSide extends Component {
 
   render() {
     const { classes } = this.props;
-    const { msg, err, email, password } = this.state;
+    const { msg, err, email, password, isLoading } = this.state;
 
     return (
       <Fade in={true} >
@@ -143,16 +191,21 @@ class SignInSide extends Component {
               helperText={err === "pass" && msg}
               autoComplete="current-password"
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              onClick={this.handleLogin}
-              className={classes.submit}
-            >
-              Sign In
-            </Button>
+            
+            <div>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                disabled={isLoading}
+                onClick={this.handleLogin}
+                className={classes.submit}
+              >
+                Sign In
+              </Button>
+              {isLoading && <CircularProgress size={24} className={classes.buttonProgress} />}
+            </div>
             <Grid container>
               <Grid item xs>
                 <Link href="/forgotpassword" variant="body2">
